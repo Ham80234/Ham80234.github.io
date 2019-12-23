@@ -1,17 +1,28 @@
 :root {
-    --main-bg-color: #464159;
-    --main-bg-accent: #464159;
-    --main-bg-co-pallet: #8bbabb;
+    --main-bg-color: #313131;
+    --main-bg-accent: #414141;
+    --main-bg-co-pallet: #ca3e47;
     --main-text-color: #f3f3f3;
 }
 .mainContainer{
     background-color: var(--main-bg-color);
+    z-index: 0;
 }
 html body{
     background-color: var(--main-bg-color);
 }
 .card{
-    background-color: var(--main-bg-accent);
+    background: var(--main-bg-accent);
+    width: 20rem;
+    height: 25rem;
+    margin-top: 10px;
+}
+hr{
+    background-color: var(--main-text-color);
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+
 }
 .title{
     font-size: 5rem;
@@ -21,3 +32,27 @@ html body{
 .accent{
     color: var(--main-bg-co-pallet);
 }
+.smalltitle{
+    font-size: 1rem;
+    color: var(--main-text-color);
+}
+.grid-col{
+    z-index: -1;
+    position: absolute;
+    border: 2px solid #272727;
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    height: 50rem;
+}
+.card-float:hover{
+    -moz-transform: translate(0px, -15px);
+    -webkit-transform: translate(0px, -15px);
+    -o-transform: translate(0px, -15px);
+    -ms-transform: translate(0px, -15px);
+    transform: translate(0px, -15px);
+    transition-duration: .35s;
+    border-style: solid;
+    border-color: var(--main-bg-co-pallet);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 var(--main-bg-co-pallet);
+  }
