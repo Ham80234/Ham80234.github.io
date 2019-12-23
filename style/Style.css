@@ -1,6 +1,23 @@
-.grid-col{
-    width:250px;
-    height: 1000px;
-    border: 1px solid black;
-    background-color: #313131;
+:root {
+    --main-bg-color: #464159;
+    --main-bg-accent: #464159;
+    --main-bg-co-pallet: #8bbabb;
+    --main-text-color: #f3f3f3;
+}
+.mainContainer{
+    background-color: var(--main-bg-color);
+}
+html body{
+    background-color: var(--main-bg-color);
+}
+.card{
+    background-color: var(--main-bg-accent);
+}
+.title{
+    font-size: 5rem;
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+.accent{
+    color: var(--main-bg-co-pallet);
 }
