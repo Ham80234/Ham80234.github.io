@@ -24,6 +24,10 @@
     background-color: var(--main-accent-color);
 }
 
+.bg-text-accent {
+    background-color: var(--main-accent-color);
+}
+
 .main-text-color {
     color: var(--main-text-color);
 }
@@ -40,18 +44,41 @@
     color: var(--main-text-muted-color);
 }
 
-.card-float:hover{
-    -moz-transform: translate(0px, -15px);
-    -webkit-transform: translate(0px, -15px);
-    -o-transform: translate(0px, -15px);
-    -ms-transform: translate(0px, -15px);
-    transform: translate(0px, -15px);
+.par-style {
+    font-size: 1.3rem;
+    padding: 40px;
+}
+
+.par-style::first-letter{
+    font-size: 250%;
+}
+
+.text-color-dark {
+    color: var(--main-secondary-color);
+}
+
+.li-item {
+    list-style-type: none;
+    font-size: 1.5rem;
+    margin-top: 50px;
+}
+
+.li-item:hover {
+    -moz-transform: translate(0px, -5px);
+    -webkit-transform: translate(0px, -5px);
+    -o-transform: translate(0px, -5px);
+    -ms-transform: translate(0px, -5px);
+    transform: translate(0px, -5px);
+    transform: translate(0px, -5px);
     transition-duration: .35s;
-    border-style: solid;
-    border-color: var(--main-accent-color);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 var(--main-accent-color);
-  }
-.card{
+    text-shadow: var(--main-accent-color) 1px 0 px;
+}
+
+.shadow-box {
+    box-shadow: 16px 16px var(--main-secondary-color);
+}
+
+.card {
     margin: 5px;
     width: 20rem;
     height: 25rem;
