@@ -1,50 +1,45 @@
 :root {
-    --main-bg-color: #313131;
-    --main-bg-accent: #414141;
-    --main-bg-co-pallet: #ca3e47;
-    --main-text-color: #f3f3f3;
+    --main-bg-color: #222831;
+    --main-secondary-color: #393e46;
+    --main-accent-color: #00adb5;
+    --main-text-color: #eeeeee;
+    --main-text-muted-color: #9c9c9c;
 }
-.mainContainer{
-    background-color: var(--main-bg-color);
-    z-index: 0;
-}
-html body{
-    background-color: var(--main-bg-color);
-}
-.card{
-    background: var(--main-bg-accent);
-    width: 20rem;
-    height: 25rem;
-    margin-top: 10px;
-}
-hr{
-    background-color: var(--main-text-color);
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
 
+.circle {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
 }
-.title{
-    font-size: 5rem;
-    color: var(--main-text-color);
+
+.bg-primary-color {
     background-color: var(--main-bg-color);
 }
-.accent{
-    color: var(--main-bg-co-pallet);
+
+.bg-secondary-color {
+    background-color: var(--main-secondary-color);
 }
-.smalltitle{
-    font-size: 1rem;
+
+.bg-accent-color {
+    background-color: var(--main-accent-color);
+}
+
+.main-text-color {
     color: var(--main-text-color);
 }
-.grid-col{
-    z-index: -1;
-    position: absolute;
-    border: 2px solid #272727;
-    width: 100px;
-    margin: 0;
-    padding: 0;
-    height: 50rem;
+
+.font-header {
+    font-size: 7rem;
 }
+
+.text-accent {
+    color: var(--main-accent-color);
+}
+
+.muted-text {
+    color: var(--main-text-muted-color);
+}
+
 .card-float:hover{
     -moz-transform: translate(0px, -15px);
     -webkit-transform: translate(0px, -15px);
@@ -53,6 +48,12 @@ hr{
     transform: translate(0px, -15px);
     transition-duration: .35s;
     border-style: solid;
-    border-color: var(--main-bg-co-pallet);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 var(--main-bg-co-pallet);
+    border-color: var(--main-accent-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 var(--main-accent-color);
   }
+.card{
+    margin: 5px;
+    width: 20rem;
+    height: 25rem;
+    margin-top: 10px;
+}
