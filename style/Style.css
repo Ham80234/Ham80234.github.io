@@ -47,6 +47,8 @@
 .par-style {
     font-size: 1.3rem;
     padding: 40px;
+    color: var(--main-text-color);
+    text-shadow: var(--main-text-muted-color)1px 0 5px; 
 }
 
 .par-style::first-letter{
@@ -71,7 +73,7 @@
     transform: translate(0px, -5px);
     transform: translate(0px, -5px);
     transition-duration: .35s;
-    text-shadow: var(--main-accent-color) 1px 0 px;
+    
 }
 
 .shadow-box {
