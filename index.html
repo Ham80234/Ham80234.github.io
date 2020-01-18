@@ -30,80 +30,131 @@
     </div>
 
     <div class="wrapper">
-        <div class="logo">
-            Andrew Hamlett
-        </div>
-        <div class="nav test">
-            <ul>
-                <li>Home</li>
-                <li>Resume</li>
-                <li>Projects</li>
-                <li>Contact me</li>
-            </ul>
+
+        <div class="row">
+            <div class="col">
+                <div class="logo">
+                    Andrew Hamlett
+                </div>
+            </div>
+            <div class="col">
+                <div class="nav test">
+                    <ul>
+                        <li>Home</li>
+                        <li>Resume</li>
+                        <li>Projects</li>
+                        <li>Contact me</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="social-media">
-            <ul>
-                <li><i class="icon-large fab fa-instagram fa-2x" aria-hidden="true"></i></li>
-                <li><i class="icon-large fab fa-github fa-2x" aria-hidden="true"></i></li>
-                <li><i class="icon-large fab fa-linkedin fa-2x" aria-hidden="true"></i></li>
+        <div class="row">
+            <div class="col">
+                <div class="social-media">
+                    <ul>
+                        <li><i class="icon-large fab fa-instagram fa-2x" aria-hidden="true"></i></li>
+                        <li><i class="icon-large fab fa-github fa-2x" aria-hidden="true"></i></li>
+                        <li><i class="icon-large fab fa-linkedin fa-2x" aria-hidden="true"></i></li>
 
-            </ul>
-        </div>
-        <div class="side-stripe">
-            SOFTWARE ENGINEER
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mycard" style="width: 58rem; height: 33rem;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto ">
+                                <img src="https://scontent-msp1-1.xx.fbcdn.net/v/t1.0-9/s960x960/76762558_3072114276135477_2209204428282527744_o.jpg?_nc_cat=108&_nc_ohc=Nvy_e3AJ8vUAX9PLEle&_nc_ht=scontent-msp1-1.xx&_nc_tp=1002&oh=7177300d575c2c7eba4e54aa47fd832c&oe=5E94A397"
+                                    alt="">
+                            </div>
+                            <div class="col   text-school">
+                                <h2>Andrew Hamlett</h2>
+                                <h3>Winona State University</h3>
+                                <h4>Applied Computer Science</h4>
+                                <h5>Minor in Data Science</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col ">
+                                <p>major with a minor in data science studying at Winona State University. I am currently working as an intern at
+                                    Bluestem brands, this is all while I am finishing my degree. I started as an automated test engineer, then I was
+                                    transitioned onto framework engineer, and now I am found to be on the platform team. I enjoy writing programs
+                                    and learning new interesting ways to program more efficiently
+                                </p>
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col">
+                <div class="side-stripe">
+                    SOFTWARE ENGINEER
+                </div>
+            </div>
+           
         </div>
         <div>
-            
         </div>
+        <script type="text/javascript">
+            TweenMax.to(".overlay h1", 3, {
+                opacity: 0,
+                y: -60,
+                ease: Expo.easeInOut
+            })
+            TweenMax.to(".overlay p", 3, {
+                opacity: 0,
+                y: -60,
+                ease: Expo.easeInOut
+            })
+            TweenMax.to(".overlay", 2, {
+                delay: 1,
+                top: "-110%",
+                ease: Expo.easeInOut
+            })
+            TweenMax.from(".logo", 2, {
+                delay: 2.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
 
+            TweenMax.from(".side-stripe", 2.6, {
+                delay: 2.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
+            TweenMax.from(".social-media", 2.3, {
+                delay: 2.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
+            TweenMax.from(".mycard", 2.3, {
+                delay: 3.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
 
-    </div>
-    <script type="text/javascript">
-        TweenMax.to(".overlay h1", 3, {
-            opacity: 0,
-            y: -60,
-            ease: Expo.easeInOut
-        })
-        TweenMax.to(".overlay p", 3, {
-            opacity: 0,
-            y: -60,
-            ease: Expo.easeInOut
-        })
-        TweenMax.to(".overlay", 2, {
-            delay: 1,
-            top: "-100%",
-            ease: Expo.easeInOut
-        })
-        TweenMax.from(".logo", 2, {
-            delay: 2.4,
-            opacity: 0,
-            y: 20,
-            ease: Expo.easeInOut
-        })
+            TweenMax.staggerFrom(".test ul li", 1, {
+                delay: 2.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            }, 0.2)
+            TweenMax.staggerTo(".social-media ul li", 1, {
+                delay: 2.4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            }, 0.2)
+        </script>
 
-        TweenMax.from(".side-stripe", 2.6, {
-            delay: 2.4,
-            opacity: 0,
-            y: 20,
-            ease: Expo.easeInOut
-        })
-        TweenMax.from(".social-media", 2.3, {
-            delay: 2.4,
-            opacity: 0,
-            y: 20,
-            ease: Expo.easeInOut
-        })
-
-        TweenMax.staggerFrom(".test ul li", 1, {
-            delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
-        },0.2)
-        TweenMax.staggerTo(".social-media ul li", 1, {
-            delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
-        },0.2)
-    
-    </script>
-      
 </body>
 
 </html>

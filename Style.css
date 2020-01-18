@@ -12,11 +12,19 @@ body{
 .logo{
     line-height: 40px;
     float: left;
+    padding: 0px;
     margin: 1.2em 0 0 .7em;
     font-weight: bolder;
     color: #fff;
     font-size: 2.4rem;
 }
+*{
+    margin: 0px;
+}
+.container{
+    margin: 0;
+}
+
 .nav{
     line-height: 40px;
     margin: 1.2em;
@@ -31,7 +39,7 @@ body{
 }
 .social-media{
     position: absolute;
-    top: 50%;
+    top: 350px;
     transform: translateY(-50%);
 }
 .social-media ul li{
@@ -42,7 +50,7 @@ body{
 }
 .side-stripe{
     position: absolute;
-    top: 50%;
+    top: 350px;
     transform: translateY(-50%);
     right: -13rem;
     transform: rotate(90deg);
@@ -104,3 +112,35 @@ body{
     font-weight: lighter;
     letter-spacing: 12px;
 }
+
+.mycard{
+    position: absolute;
+    top: 20%;
+    left: -30%;
+}
+.mycard img{
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 20px ;
+    padding: 2px;
+}
+.text-school{
+    margin-top: 50px;
+}
+.text-school h2{
+    font-size: 3rem;
+}
+.text-school h3{
+    color: #aaaaaa;
+}
+.text-school h4{
+    color: #aaaaaa;
+}
+.text-school h5{
+    color: #aaaaaa;
+}
+.col p{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
