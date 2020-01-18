@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./Style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -32,7 +33,7 @@
         <div class="logo">
             Andrew Hamlett
         </div>
-        <div class="nav">
+        <div class="nav test">
             <ul>
                 <li>Home</li>
                 <li>Resume</li>
@@ -43,7 +44,7 @@
 
         <div class="social-media">
             <ul>
-                <li><i class="icon-large fab fa-facebook fa-2x" aria-hidden="true"></i></li>
+                <li><i class="icon-large fab fa-instagram fa-2x" aria-hidden="true"></i></li>
                 <li><i class="icon-large fab fa-github fa-2x" aria-hidden="true"></i></li>
                 <li><i class="icon-large fab fa-linkedin fa-2x" aria-hidden="true"></i></li>
 
@@ -59,12 +60,12 @@
 
     </div>
     <script type="text/javascript">
-        TweenMax.to(".overlay h1", 2, {
+        TweenMax.to(".overlay h1", 3, {
             opacity: 0,
             y: -60,
             ease: Expo.easeInOut
         })
-        TweenMax.to(".overlay p", 2, {
+        TweenMax.to(".overlay p", 3, {
             opacity: 0,
             y: -60,
             ease: Expo.easeInOut
@@ -94,10 +95,10 @@
             ease: Expo.easeInOut
         })
 
-        TweenMax.staggerFrom(".nav ul li", 1, {
+        TweenMax.staggerFrom(".test ul li", 1, {
             delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
         },0.2)
-        TweenMax.staggerFrom(".social-media ul li", 1, {
+        TweenMax.staggerTo(".social-media ul li", 1, {
             delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
         },0.2)
     
