@@ -212,17 +212,10 @@ body {
 }
 
 
-@media only screen and (max-width : 1143px) {
-    .side-stripe{
-        display: none;
-    }
-    .social-media{
-        display: none;
-    }
-}
 
 
-@media only screen and (max-width : 375px) {
+
+@media only screen and (max-width : 700px) {
     .Mobile{
         transform: translate(0, 300px);
     }
