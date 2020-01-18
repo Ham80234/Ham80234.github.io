@@ -180,7 +180,7 @@ body {
 }
 
 .projects{
-    height: 550px;
+    height: auto;
     background-color: #fff;
 }
 
