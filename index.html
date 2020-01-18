@@ -43,9 +43,9 @@
                 <div class="nav test">
                     <ul>
                         <li>Home</li>
-                        <li>Resume</li>
-                        <li>Projects</li>
-                        <li>Contact me</li>
+                        <a href="./ANDREW HAMLETT.pdf"><li>Resume</li></a>
+                        <li onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth', block: 'end', inline: 'nearest'});">Projects</li>
+                        <a href="mailto:ham80234@gmail.com"><li>Contact me</li></a>
                     </ul>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     transform="translate(0 -161)" />
             </svg>
         </div>
-        <div class="projects">
+        <div  id = "projects" class="projects">
             <div class="container">
                 <div class="row">
                   <div class="col-sm">
@@ -207,7 +207,9 @@
                         
                         </div>
                       </div>
+                      <h4 style="float: left;">View more Projects on my <a href="https://github.com/Ham80234">github</a></h4>
                   </div>
+                  
                 </div>
               </div>
         </div>
