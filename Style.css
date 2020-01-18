@@ -1,0 +1,97 @@
+html, body {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100;
+   font-family: monospace; 
+}
+body{
+   background: url(https://lp-cms-production.imgix.net/2019-06/12dec8938220093eb7f1fdb8a9ce40b8-the-rocky-mountains.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4) no-repeat 50% 1%;
+   background-size: cover; 
+}
+.logo{
+    line-height: 40px;
+    float: left;
+    margin: 1.2em 0 0 2.2em;
+    font-weight: bolder;
+    color: #fff;
+    font-size: 2.4rem;
+}
+.nav{
+    line-height: 40px;
+    margin: 1.2em;
+    position: absolute;
+    right: 0;
+}
+.nav ul li{ 
+    list-style: none;
+    display: inline-block;
+    color: #fff;
+    padding-right: 36px;
+}
+.social-media{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.social-media ul li{
+    list-style: none;
+    color: #fff;
+    padding-top: 20px;
+   
+}
+.side-stripe{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -13rem;
+    transform: rotate(90deg);
+    color: #fff;
+    letter-spacing: 4px;
+    font-size: 3rem;
+}
+.header{
+    position: absolute;
+    top: 38%;
+    left:46;
+    transform: translate(-50%, -50%);
+}
+
+.header h1{
+    color: #fff;
+    font-weight: bolder;
+}
+
+.header p{
+    color: #fff;
+    font-weight: lighter;
+}
+
+.header button{
+    margin-top: 12px;
+    border: none;
+    padding: 16px 40px;
+    color: #fff;
+    letter-spacing: 4px;
+    font-weight: 600;
+    font-size: 12px;
+}
+.overlay{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    top: 0%;
+
+}
+
+.overlay h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: 12px;
+}

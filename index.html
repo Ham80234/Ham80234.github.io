@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../style/Style.css">
+    <link rel="stylesheet" href="./Style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -17,250 +17,86 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cd2d72d885.js" crossorigin="anonymous"></script>
 
-
-    <title>Andrew Hamlett</title>
 </head>
 
-<body class="bg-primary-color">
+<body>
+    <div class="overlay">
+        <h1>Andrew Hamlett</h1>
+    </div>
 
-    <hr class="bg-text-accent" style="height: 10px; margin-top: 0px; margin-bottom: 0px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-8" style="margin-top: 10px;">
-                <div class="circle bg-secondary-color shadow">
-                    <h1 class="font-header main-text-color">Hello, <br> I am <br> <span class="text-accent">
-                            Andrew</span>
-                    </h1>
-                    <h3 class="muted-text">Winona State University</h3>
-                    <h5 class="muted-text"> Applied Computer Science</h5>
-                </div>
-
-            </div>
-            <div class="col-4">
-                <div class="card shadow-box" style="margin-top: 50px;">
-                    <ul>
-                        <li class="text-color-dark li-item" style="margin-top: 70px;"
-                            onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
-                            ➤&nbsp;&nbsp;Projects</li>
-                        <li class="text-color-dark li-item">➤&nbsp;&nbsp;Resume</li>
-                        <li class="text-color-dark li-item">➤&nbsp;&nbsp;Contact me</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="wrapper">
+        <div class="logo">
+            Andrew Hamlett
+        </div>
+        <div class="nav">
+            <ul>
+                <li>Home</li>
+                <li>Resume</li>
+                <li>Projects</li>
+                <li>Contact me</li>
+            </ul>
         </div>
 
+        <div class="social-media">
+            <ul>
+                <li><i class="icon-large fab fa-facebook fa-2x" aria-hidden="true"></i></li>
+                <li><i class="icon-large fab fa-github fa-2x" aria-hidden="true"></i></li>
+                <li><i class="icon-large fab fa-linkedin fa-2x" aria-hidden="true"></i></li>
+
+            </ul>
+        </div>
+        <div class="side-stripe">
+            SOFTWARE ENGINEER
+        </div>
+        <div>
+            
+        </div>
+
+
     </div>
-    <hr class="bg-text-accent" style="height: 10px; margin-top: 100px; margin-bottom: 0px;">
-    <div class="bg-text-accent par-style" style="margin-top: 0px;">Hello, I am Andrew Hamlett, I am an applied computer
-        science
-        major with a minor in data science studying at Winona State University. I am currently working as an intern at
-        Bluestem brands, this is all while I am finishing my degree. I started as an automated test engineer, then I was
-        transitioned onto framework engineer, and now I am found to be on the platform team. I enjoy writing programs
-        and learning new interesting ways to program more efficiently </div>
+    <script type="text/javascript">
+        TweenMax.to(".overlay h1", 2, {
+            opacity: 0,
+            y: -60,
+            ease: Expo.easeInOut
+        })
+        TweenMax.to(".overlay", 2, {
+            delay: 1,
+            top: "-100%",
+            ease: Expo.easeInOut
+        })
+        TweenMax.from(".logo", 2, {
+            delay: 2.4,
+            opacity: 0,
+            y: 20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.from(".side-stripe", 2.6, {
+            delay: 2.4,
+            opacity: 0,
+            y: 20,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from(".social-media", 2.3, {
+            delay: 2.4,
+            opacity: 0,
+            y: 20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.staggerFrom(".nav ul li", 1, {
+            delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
+        },0.2)
+        TweenMax.staggerFrom(".social-media ul li", 1, {
+            delay: 2.4, opacity: 0,y: 20,ease: Expo.easeInOut
+        },0.2)
+    
+    </script>
+      
 </body>
-
-<hr class="bg-text-accent" style="height: 10px; margin-top: 100px; margin-bottom: 0px;">
-<div>
-    <h1 id="projects" class="font-header main-text-color" style="margin: 30px;">Projects</h1>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: 40rem;">
-                <img src="https://i.imgur.com/cmP23TXr.png" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>Health First</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">A food tracking website that also tracks your workout.</p>
-                    <hr>
-                    <h4>Technologies:</h4>
-                    <ul>
-                        <li>JBDC</li>
-                        <li>servlet</li>
-                        <li>mySQL</li>
-                        <li>JavaScript</li>
-                    </ul>
-
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary float-left"> <a style="text-decoration: none; color: white;"
-                            href="https://imgur.com/a/SmsbT1J">Images</a></button>
-                    <button class="btn btn-primary float-right"><a style="text-decoration: none; color: white;"
-                            href="https://github.com/Ham80234/healthfirst">Code</a></button>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: 40rem;">
-                <img src="https://i.imgur.com/y7H996t.png" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>SwoleMates</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">A workout planning app that has multiple users and tracks stats about your
-                        workouts .</p>
-                    <hr>
-                    <h4>Technologies:</h4>
-                    <ul>
-                        <li>Flutter</li>
-                        <li>Dart</li>
-                        <li>Firebase(user db)</li>
-                        <li>MySQLite</li>
-                    </ul>
-
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary float-left"> <a style="text-decoration: none; color: white;"
-                            href="https://www.youtube.com/watch?v=q7ApBrE79_8&feature=emb_logo">Video</a></button>
-                    <button class="btn btn-primary float-right"><a style="text-decoration: none; color: white;"
-                            href="https://github.com/Ham80234/Swolemates">Code</a></button>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: 40rem;">
-                <img src="https://i.imgur.com/smHIpQ6r.png" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>410 board game</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">A website allows 4 users on the same network to play a game.</p>
-                    <hr>
-                    <h4>Technologies:</h4>
-                    <ul>
-                        <li>Next.js</li>
-                        <li>express</li>
-                        <li>html, css, js</li>
-                    </ul>
-
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary float-left disabled">Images</button>
-                    <button class="btn btn-primary float-right"><a style="text-decoration: none; color: white;"
-                            href="https://github.com/Ham80234/Board-game">Code</a></button></button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row" st>
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: auto;">
-                <img src="http://via.placeholder.com/640x360" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>Item Data Provider</h3>
-                </div>
-                <p> Used in automated tests to dynamically gather in/out of stock items</p>
-                <div class="card-body">
-                    <p class="card-text"> </p>
-                    <hr>
-                    <h4>Technologies:</h4>
-                    <ul>
-                        <li>Python</li>
-                        <li>Django</li>
-                        <li>Fusion</li>
-                        <li>JPA</li>
-                    </ul>
-                    <p>this code is not available since this was a project I worked on during my internship</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary float-left">Images</button>
-                    <button class="btn btn-primary float-right disabled">Code</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: auto;">
-                <img src="http://via.placeholder.com/640x360" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>Cypress Analytics</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">A website that tracks failures in testing suites. used with the cypress testing
-                        framework</p>
-                    <hr>
-                    <h4>Technologies:</h4>
-                    <ul>
-                        <li>Next.js</li>
-                        <li>postgres</li>
-                        <li>JPA</li>
-                        <li>Google graphs</li>
-                    </ul>
-
-                    <p>this code is not available since this was a project I worked on during my internship </p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary float-left">Images</button>
-                    <span class="d-inline-block float-right" tabindex="0" data-toggle="tooltip"
-                        title="Disabled tooltip">
-                        <button class="btn btn-primary" style="pointer-events: none;" type="button"
-                            disabled>Code</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 21rem; height: 40rem;">
-                <img src="http://via.placeholder.com/640x360" class="card-img-top" alt="...">
-                <div class="card-title">
-                    <h3>Flutter Banking app</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the
-                        card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<hr class="bg-text-accent" style="height: 10px; margin-top: 100px; margin-bottom: 0px;">
-
-<h1 class="font-header main-text-color">About Me</h1>
-<div class="card" style="width: 80%; height: auto;margin: 0 auto; /* Added */
-float: none;
-margin-bottom: 10px;
-color: black;">
-    <p style="margin: 5px;font-size: 1.2rem;">I am a Computer Science Major with a data science minor studying at Winona
-        State University. I have always enjoyed computers but didn't get into computer programming until I was about 12
-        years old. At first I didn't learn all that much a few things here and a few things there. But when I was in
-        highschool i really got into it, it was at this time I knew what I wanted to do for my career.
-        I started my first computer related job in 2017 at bluestem brands as a software engineering intern. Mainly I
-        worked QA at first, writing automated tests against the brand we owned. Then I transitioned to more of a tool
-        developer, this entailed me writing tools for the QA team to make there job easier, along with this i was moved
-        into framework engineering, crafting deploy schedules and new ways that we can run tests. Now i am on the
-        platform team, this is somewhat like a golden QA engineer, we help other teams get their products up to the
-        standard that we hope to achieve in our releases. While working there I was handed many projects to work on
-        these were full stack, devops, backend, and a bit front end.
-    </p>
-    <div style="margin-left: 50px;">
-        <h3>Skills</h3>
-        <ul>
-            <li>Html, CSS, JavaScript</li>
-            <li>Python</li>
-            <ul>
-                <li>Python 2/3.0</li>
-                <li>Django</li>
-            </ul>
-            <li>Swift</li>
-            <li>Node.js </li>
-            <ul>
-                <li>Express</li>
-                <li>Cypress</li>
-                <li>ect...</li>
-            </ul>
-            <li>Next.js</li>
-            <li>JBDC</li>
-            <li>Servlet</li>
-
-            <li>Dart</li>
-            <li>Flutter</li>
-        </ul>
-    </div>
-</div>
 
 </html>
