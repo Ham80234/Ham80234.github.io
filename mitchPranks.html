@@ -38,6 +38,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
+    @media only screen and (max-width : 700px) {
+        #mainText{
+          height: 400px!important;
+        }
+        
+    }
+
     * {
         margin: 0;
     }
@@ -74,41 +81,40 @@
 
 
         <div class="row">
-            <div id="" class="text col-sm" style="border-right: 2px solid #9ab6e4; height: 100vh;">
+            <div id="mainText" class="text col-sm" style="border-right: 2px solid #9ab6e4; height: 100vh;">
                 <h2 class="text" style=" margin-left: 10px; margin-top: 10px; margin-right:10px">
                     Welcome to Mitch Pranks!
                 </h2>
                 <p class="text" style="margin: 20px;">
                     You must be confused why you were sent here, well it is because you are a fool and fell for one of
                     my devious pranks. You fool I am the prank master and you have fallen for my prank once again. Ever
-                    since I was a young kid I have been pul;ling pranks on unsuspecting citizens, I have convinced my
+                    since I was a young kid I have been pulling pranks on unsuspecting citizens, I have convinced my
                     parents that I am actually their kid, that will be a fun one to reveal. I have also convinced all my
                     friends that I am diabetic LOL what nerds. Well anyway thanks for coming to the website please
                     consider giving me money, times are tough
                 </p>
 
             </div>
-            <div id="image" class="image col-sm" >
-                <img style="border-radius: 5px; border: 2px grey solid" class="shadow" src="https://scontent-msp1-1.xx.fbcdn.net/v/t1.0-9/53179936_10213424992084680_1674913674935926784_o.jpg?_nc_cat=100&_nc_sid=730e14&_nc_ohc=JoY5yXACHl8AX8BQBut&_nc_ht=scontent-msp1-1.xx&oh=4e7554b402114ef65e66e9b6b6e2c2dd&oe=5F43DADD"
-                    alt="" srcset="">
+            <div id="image" class="image col-sm">
+                <img style="border-radius: 5px; border: 2px grey solid" class="shadow" src="./img.jpg" alt="" srcset="">
             </div>
             <div class="col-sm">
             </div>
         </div>
         <script type="text/javascript">
             TweenMax.from(".text", 1, {
-            delay: .4,
-            opacity: 0,
-            y: 20,
-            ease: Expo.easeInOut
-        })
+                delay: .4,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
 
-        TweenMax.from(".image", 1, {
-            delay: .6,
-            opacity: 0,
-            y: 20,
-            ease: Expo.easeInOut
-        })
+            TweenMax.from(".image", 1, {
+                delay: .6,
+                opacity: 0,
+                y: 20,
+                ease: Expo.easeInOut
+            })
         </script>
 
 
