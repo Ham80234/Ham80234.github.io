@@ -49,6 +49,6 @@ function createTableEntry(date, time, desc){
 function Cleardata(){ 
     var elm = document.getElementById("dataTable")
     elm.innerHTML = ""
-    window.localStorage.setItem("data", window.localStorage.setItem('data', JSON.stringify({items: []})))
+    window.localStorage.setItem("data", JSON.stringify({items: []}))
 }
 
