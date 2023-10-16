@@ -57,7 +57,12 @@ body{
 .nav-desktop {
     display: none;
 }
+.menu  {
+    position: absolute;
+    background: var(--secondary-dark-color);
+}
 .nav-mobile {
+
     display: flex;
 }
 }
