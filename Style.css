@@ -5,7 +5,10 @@
     --mobile-break-point: 600;
 }
 body{ 
-    background: var(--main-dark-color);
+    background-color: #3d0e2a;
+    background-image: linear-gradient(225deg, #3d0e2a 0%, #181020 50%, #133c58 100%);    
+    background-attachment: fixed;
+    height: 100%;
     color: var(--ternary-dark-color)
 }
 .nav-desktop ul, li {
@@ -31,6 +34,7 @@ body{
     margin-right: 500px;
 }
 .nav-desktop ul li:hover {
+    transition: color .15s ease-in-out;
    color: #3fa5d3;
 }
 
