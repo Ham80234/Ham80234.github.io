@@ -6,7 +6,8 @@
 }
 body{ 
     background-color: #3d0e2a;
-    background-image: linear-gradient(225deg, #3d0e2a 0%, #181020 50%, #133c58 100%);    
+    background-image: linear-gradient(-225deg, #3d0e2a 0%, #181020 50%, #133c58 100%); 
+    transition: all 5s ease-in-out;   
     background-attachment: fixed;
     height: 100%;
     color: var(--ternary-dark-color)
@@ -63,6 +64,11 @@ body{
 }
 .menu  {
     position: absolute;
+    height: 100vh;
+    margin: 0;
+    left: 0;
+    width: 300px;
+    top: 0;
     background: var(--secondary-dark-color);
 }
 .nav-mobile {
