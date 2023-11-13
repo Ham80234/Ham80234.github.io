@@ -147,3 +147,15 @@ img {
     
     .nav-desktop {display: none;}
 }
+
+
+@media screen and (max-width: 400px) {
+    .nav-mobile {
+        display: flex;
+        padding-top: 1rem;
+        margin: 0 1rem;
+    }
+    .content { 
+        margin: 0 1rem;
+    }
+}
