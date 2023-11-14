@@ -54,9 +54,8 @@ main::after {
     transition: all 1s ease-in-out;
 }
 
-.links ul li:hover { 
+.links ul li:hover, .active { 
     color: #c0bcbc;
-    margin-bottom: 4px;
     border-bottom: 2px currentColor solid;
 }
 
@@ -87,12 +86,15 @@ img {
 }
 
 .content { 
-    max-width: 50rem;
+    max-width: 55rem;
     margin: 0 auto;
     color: white;
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+.content p { 
+    font-size: 1.2rem;
 }
 
 .hi { 
