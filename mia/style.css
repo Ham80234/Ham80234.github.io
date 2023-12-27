@@ -39,4 +39,18 @@ body {
 .svg { 
     --animate-duration: 5.5s;
     width: 30px;
+    padding-top: 15px;
+}
+
+.fade-in-slower { 
+    --animate-duration: 8.5s;
+}
+
+h2 { 
+    padding: 15px;
+    text-align: center;
+}
+
+p{ 
+    font-family: monospace;
 }
