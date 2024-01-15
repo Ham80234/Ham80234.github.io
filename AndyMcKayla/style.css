@@ -1,0 +1,56 @@
+body, html { 
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+header { 
+    font-family: 'Playfair Display', serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 140px;
+}
+header ul { 
+    cursor: pointer;
+    display: flex;
+    gap: 45px;
+    list-style: none;
+}
+header .active { 
+    border-bottom: 1px solid black;
+}
+header li:hover { 
+    border-bottom: 1px solid rgb(200, 194, 194);
+}
+.mobileMenu { 
+    display: none;
+}
+
+
+@media (max-width: 890px) {
+    .header { 
+        width: 80vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+    .header span {
+        font-size: 2rem;
+    }
+    .nav{ 
+        display: none;
+        position: absolute;
+        height: 100vw;
+        top: -100px;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+       
+    }
+    .mobileMenu { 
+        display: unset;
+    }
+  }
