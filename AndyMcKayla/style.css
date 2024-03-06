@@ -29,28 +29,57 @@ header li:hover {
 }
 
 
+main { 
+    display: flex;
+    justify-content: center;
+}
+main img { 
+    object-fit: cover;
+    object-position: 0px -362px;;
+    width: 100vw;
+    height: 520px;
+
+}
+
+
 @media (max-width: 890px) {
+    body { 
+        overflow-y: hidden;
+    }
     .header { 
         width: 80vw;
         display: flex;
         align-items: center;
         justify-content: space-between;
-
     }
     .header span {
         font-size: 2rem;
     }
-    .nav{ 
-        display: none;
-        position: absolute;
-        height: 100vw;
-        top: -100px;
-        width: 80vw;
-        display: flex;
-        flex-direction: column;
-       
-    }
+
     .mobileMenu { 
         display: unset;
+    }
+
+    main img { 
+        object-position: 0px -62px;;
+        height: 520px;
+    }
+
+    ul { 
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 80vw;
+        height: 100vh;
+    }
+    .nav { 
+        position: absolute;
+        border: 1ox solid black;
+        top: 100px;
+        left: 100vw;
+        transition: left .3s ease-in-out;
+    } 
+    .open { 
+        left: 10vw;
     }
   }
