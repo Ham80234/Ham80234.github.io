@@ -32,7 +32,14 @@ const defaults = {
   setTimeout(shoot, 0);
   setTimeout(shoot, 100);
   setTimeout(shoot, 200);
-  setTimeout(shoot, 200);
-  setTimeout(shoot, 200);
+  setTimeout(shoot, 300);
+  setTimeout(shoot, 400);
+  setTimeout(shoot, 500);
+  setTimeout(shoot, 600);
+
+  setTimeout(shoot, 700);
+
+  setTimeout(shoot, 800);
+
 
   
