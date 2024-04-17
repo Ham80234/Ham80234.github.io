@@ -29,17 +29,46 @@ const defaults = {
     });
   }
   
-  setTimeout(shoot, 0);
-  setTimeout(shoot, 100);
-  setTimeout(shoot, 200);
-  setTimeout(shoot, 300);
-  setTimeout(shoot, 400);
-  setTimeout(shoot, 500);
-  setTimeout(shoot, 600);
-
-  setTimeout(shoot, 700);
-
-  setTimeout(shoot, 800);
 
 
-  
+
+  function trigger() { 
+    setTimeout(shoot, 0);
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 200);
+    setTimeout(shoot, 300);
+    setTimeout(shoot, 400);
+    setTimeout(shoot, 500);
+    setTimeout(shoot, 600);
+    setTimeout(shoot, 700);
+    setTimeout(shoot, 800);
+
+    let will = document.getElementById('will')
+    will.classList.remove('hide')
+    will.classList.add('animate__lightSpeedInLeft')
+
+    let you = document.getElementById('you')
+    you.classList.remove('hide')
+    you.classList.add('animate__lightSpeedInLeft')
+
+
+    let quest = document.getElementById('quest')
+    quest.classList.remove('hide')
+    quest.classList.add('animate__rollIn')
+
+    let up = document.getElementsByClassName('up')
+    let down = document.getElementsByClassName('down')
+    console.log(up)
+
+    
+    Array.from(up).forEach(e => {
+        e.classList.remove('hide')
+        e.classList.add('animate__bounceInUp')
+    })
+
+    Array.from(down).forEach(e => {
+        e.classList.remove('hide')
+        e.classList.add('animate__bounceInDown')
+    })
+
+  }

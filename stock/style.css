@@ -27,7 +27,9 @@ h1 {
 
     float: right;
 }
-
+.hide { 
+    display: none;
+}
 .container { 
     display: flex;
     justify-content: center;
