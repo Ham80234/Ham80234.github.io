@@ -10,40 +10,35 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 </head>
-<body>
+<body onload="random()">
+    <!-- <div class="image">
+        <img src="https://www.amcharts.com/wp-content/uploads/2019/10/demo_14592_none-11.png" alt="">
+    </div> -->
+
     <div class="container">
-        <div id="present" class="card animate__jackInTheBox  animate__animated " onclick="triggerDrop()">
-            <div class="blocks">
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="yellow left-right"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="yellow left-right"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="yellow top-bottom"></div>
-                <div class="yellow top-bottom"></div>
-                <div class="yellow"></div>
-                <div class="yellow top-bottom"></div>
-                <div class="yellow top-bottom"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="yellow left-right"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="red"></div>
-                <div class="yellow left-right"></div>
-                <div class="red"></div>
-                <div class="red"></div>
+        <div id="letters">
+            <div>
+                <h1 class="animate__delay-1s animate__animated animate__lightSpeedInLeft">will you</h1>
+                <h1 class="animate__delay-1s animate__animated animate__lightSpeedInRight left">be my</h1>
             </div>
-        </div>
-        <div id="message" class="message invisible">
-            this is a test message
+            <div class="best word">
+                <div class="animate__delay-3s letter animate__animated animate__bounceInUp">B</div>
+                <div class="animate__delay-3s letter animate__animated animate__bounceInDown">e</div>
+                <div class="animate__delay-3s letter animate__animated animate__bounceInUp">s</div>
+                <div class="animate__delay-3s letter animate__animated animate__bounceInDown">t</div>
+            </div>
+            <div class="man word">
+                <div class="animate__delay-3s letter animate__animated animate__bounceInUp">M</div>
+                <div class="animate__delay-3s letter animate__animated animate__bounceInDown">a</div>
+                <div class="animate__delay-3s letter animate__animated animate__bounceInUp">n</div>
+                <div class="letter animate__delay-4s ques animate__animated animate__rollIn">?</div>
+            </div>
+            <div class="mark">
+                
+    
+            </div>
         </div>
     </div>
 </body>

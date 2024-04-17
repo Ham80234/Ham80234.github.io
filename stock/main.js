@@ -1,7 +1,38 @@
-function triggerDrop() { 
-    let item = document.getElementById('present')
-    let message = document.getElementById('message')
-    item.classList.remove('animate__jackInTheBox')
-    item.classList.add('animate__bounceOutDown')
-    message.classList.remove('invisible')
+function random(event) { 
+    let letters = document.getElementsByClassName('letter') 
+    console.log(letters);
 }
+
+const defaults = {
+    spread: 360,
+    ticks: 50,
+    gravity: 0,
+    decay: 0.94,
+    startVelocity: 30,
+    shapes: ["star"],
+    colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+  };
+  
+  function shoot() {
+    confetti({
+      ...defaults,
+      particleCount: 40,
+      scalar: 1.2,
+      shapes: ["star"],
+    });
+  
+    confetti({
+      ...defaults,
+      particleCount: 10,
+      scalar: 0.75,
+      shapes: ["circle"],
+    });
+  }
+  
+  setTimeout(shoot, 0);
+  setTimeout(shoot, 100);
+  setTimeout(shoot, 200);
+  setTimeout(shoot, 200);
+  setTimeout(shoot, 200);
+
+  
