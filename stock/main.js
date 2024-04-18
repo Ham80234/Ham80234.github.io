@@ -33,7 +33,11 @@ const defaults = {
 
 
   function trigger() { 
-    setTimeout(shoot, 0);
+
+    let ctx = document.getElementById('click')
+    ctx.classList.add('animate__hinge')
+
+    setTimeout(shoot, 100);
     setTimeout(shoot, 100);
     setTimeout(shoot, 200);
     setTimeout(shoot, 300);

@@ -10,34 +10,57 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 </head>
 <body onload="random()">
-    <!-- <div class="image">
-        <img src="https://www.amcharts.com/wp-content/uploads/2019/10/demo_14592_none-11.png" alt="">
-    </div> -->
-    <div class="click" onclick="trigger()">
-        clickme
-    </div>
+
+
+    <canvas id="click"  class="animate__animated" onclick="trigger()">
+        
+    </canvas>
     <div class="container">
         <div id="letters">
             <div>
-                <h1 id="will" class="animate__delay-1s animate__animated hide">will you</h1>
-                <h1 id="you" class="animate__delay-1s animate__animated hide left">be my</h1>
+                <h1 id="will" class="animate__delay-3s animate__animated hide">will you</h1>
+                <h1 id="you" class="animate__delay-2s animate__animated hide left">be my</h1>
             </div>
             <div class="best word">
-                <div class="animate__delay-3s letter animate__animated up hide">B</div>
-                <div class="animate__delay-3s letter animate__animated down hide">e</div>
-                <div class="animate__delay-3s letter animate__animated up hide">s</div>
-                <div class="animate__delay-3s letter animate__animated down hide">t</div>
+                <div class="animate__delay-5s letter animate__animated up hide">B</div>
+                <div class="animate__delay-5s letter animate__animated down hide">e</div>
+                <div class="animate__delay-5s letter animate__animated up hide">s</div>
+                <div class="animate__delay-5s letter animate__animated down hide">t</div>
             </div>
             <div class="man word">
-                <div class="animate__delay-3s letter animate__animated up hide">M</div>
-                <div class="animate__delay-3s letter animate__animated down hide">a</div>
-                <div class="animate__delay-3s letter animate__animated up hide">n</div>
-                <div id="quest" class="letter animate__delay-4s ques animate__animated hide">?</div>
+                <div class="animate__delay-5s letter animate__animated up hide">M</div>
+                <div class="animate__delay-5s letter animate__animated down hide">a</div>
+                <div class="animate__delay-5s letter animate__animated up hide">n</div>
+                <div id="quest" class="letter animate__delay-5s ques animate__animated hide">?</div>
             </div>
         </div>
     </div>
+
+    <script>
+        const ctx = document.getElementById('click');
+        console.log(ctx)
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
+        datasets: [{
+          label: '# of Money',
+          data: [10, 12, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    </script>
 </body>
 </html>
