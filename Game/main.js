@@ -72,17 +72,21 @@ let dropLetter = ''
         let peice = document.createElement('div')
         if(content != ' ') {
             classes.push('peice')
-        
-        peice.innerText = content
-        peice.setAttribute('pos1', pos1)
-        peice.setAttribute('pos2', pos2)
-        peice.pos2 = pos2
-        peice.ondragstart = drag
-        peice.ondrop = drop
-        peice.ondragover = allowDrop
-        peice.draggable = true
-        peice.classList.add(...classes)
-    }
+            peice.innerText = content
+            peice.ontouchstart = drag
+            peice.ontouchmove = drag
+            peice.ontouchend = drop
+            peice.setAttribute('pos1', pos1)
+            peice.setAttribute('pos2', pos2)
+            peice.pos2 = pos2
+            peice.ondragstart = drag
+            peice.ondrop = drop
+            peice.ondragover = allowDrop
+
+            peice.draggable = true  
+            peice.toch
+            peice.classList.add(...classes)
+        }
         return peice
     }
 
