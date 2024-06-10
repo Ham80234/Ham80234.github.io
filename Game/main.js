@@ -12,6 +12,8 @@ let solved = [
     ['E', ' ', ' ', ' ', 'M']
 ]
 
+let moves = 0
+
 let letterMoving = ''
 let dropLetter = ''
 
@@ -21,20 +23,37 @@ let dropLetter = ''
         result.forEach((item, idx) => {
             item.forEach((letter, idx2) => {
                 board.appendChild(createPeice(letter, [], idx, idx2))
+                
             })
         })
     }
 
     function checkPeice(item){
-        let pos1 = item.getAttribute('pos1')
-        let pos2 = item.getAttribute('pos2')
+        let pos1 = item.getAttribute('pos1');
+        let pos2 = item.getAttribute('pos2');
+        let letter = item.innerHTML
+        let letterSolved = solved[pos1][pos2]
+
+        if (letter == letterSolved) { 
+            return  'correct'
+        }
 
         let row = []
+        row.forEach(row => row.push([row[pos1]]))
+        console.log(row);
         let col = []
 
-        if(true){
+        solved.forEach(i => col.push(i[pos2]))
 
+        if (row.includes(letter)) {
+            return 'partial'
         }
+
+        if (col.includes(letter)) {
+            return 'partial'
+        }
+
+        console.log(col);
     }
 
 
@@ -43,6 +62,7 @@ let dropLetter = ''
       }
 
     function drop(ev) {
+        let movesDOM = document.getElementById('moves')
         ev.preventDefault();
         dropLetter = ev.target
         console.log(`Moved Letter: ${letterMoving}, Dropped on: ${dropLetter}`);
@@ -58,9 +78,15 @@ let dropLetter = ''
 
         result[LMpos1][LMpos2] = temp
 
+        moves += 1
+        movesDOM.innerHTML = moves
+
+        console.log(movesDOM);
+
+        
+
         setboard()
 
-        console.log(LMpos1, LMpos2, DLpos1, DLpos2)
       }
 
     function drag(ev) {
@@ -72,21 +98,25 @@ let dropLetter = ''
         let peice = document.createElement('div')
         if(content != ' ') {
             classes.push('peice')
+            
+           
             peice.innerText = content
-            peice.ontouchstart = drag
-            peice.ontouchmove = drag
-            peice.ontouchend = drop
+
             peice.setAttribute('pos1', pos1)
             peice.setAttribute('pos2', pos2)
             peice.pos2 = pos2
             peice.ondragstart = drag
             peice.ondrop = drop
             peice.ondragover = allowDrop
+            
 
             peice.draggable = true  
-            peice.toch
+            classes.push(checkPeice(peice))
             peice.classList.add(...classes)
+            
+          
         }
         return peice
     }
 
+   

@@ -12,3 +12,15 @@
     align-items: center;
     cursor: grab;
 }
+
+.correct {
+    background-color: green;
+}
+
+.partial{ 
+    background-color: yellow;
+}
+
+#moves { 
+    font-size: 3rem;
+}
