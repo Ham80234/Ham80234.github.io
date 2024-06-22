@@ -40,7 +40,6 @@ let dropLetter = ''
 
         let row = []
         row.forEach(row => row.push([row[pos1]]))
-        console.log(row);
         let col = []
 
         solved.forEach(i => col.push(i[pos2]))
@@ -53,18 +52,20 @@ let dropLetter = ''
             return 'partial'
         }
 
-        console.log(col);
     }
 
 
     function allowDrop(ev) {
+        
         ev.preventDefault();
       }
 
     function drop(ev) {
+        ev.preventDefault()
         let movesDOM = document.getElementById('moves')
         ev.preventDefault();
         dropLetter = ev.target
+        console.log(dropLetter);
         console.log(`Moved Letter: ${letterMoving}, Dropped on: ${dropLetter}`);
         let LMpos1 = letterMoving.getAttribute('pos1')
         let LMpos2 = letterMoving.getAttribute('pos2')
@@ -90,6 +91,7 @@ let dropLetter = ''
       }
 
     function drag(ev) {
+        ev.preventDefault()
         console.log(ev.target);
         letterMoving = ev.target
     }
@@ -108,6 +110,9 @@ let dropLetter = ''
             peice.ondragstart = drag
             peice.ondrop = drop
             peice.ondragover = allowDrop
+            peice.touchstart = mobiledrop
+            peice.touchmove = drag
+            peice.touchend = drop
             
 
             peice.draggable = true  
@@ -119,4 +124,7 @@ let dropLetter = ''
         return peice
     }
 
-   
+   function mobiledrop(ev) { 
+        ev.preventDefault()
+        console.log('mdrop');
+   }
