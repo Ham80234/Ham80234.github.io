@@ -89,14 +89,11 @@ let dropLetter = ''
         result[DLpos1][DLpos2] =  result[LMpos1][LMpos2] 
 
         result[LMpos1][LMpos2] = temp
-
-        moves += 1
-        movesDOM.innerHTML = moves
-
-        console.log(movesDOM);
-
-        
-
+        if (letterMoving != dropLetter) { 
+            moves += 1
+            movesDOM.innerHTML = moves
+        }
+    
         setboard()
 
       }
