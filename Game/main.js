@@ -124,30 +124,10 @@ let dropLetter = ''
     }
 
     function touchMove(ev) {
-        let Moveable = document.getElementsByClassName('dragItem') // 
-        // console.log(Moveable);
         ev.preventDefault()
         let touch = ev.touches[0]
         let target = document.elementFromPoint(touch.clientX, touch.clientY)
-        let peice //
-        if(Moveable.length == 0){
-            peice =  createPeice(letterMoving.innerHTML, ['dragItem'], '1', '1') //
-            peice.style.position = 'absolute' // 
-            peice.style.width = '4rem' // 
-            peice.style.height = '4rem' // 
-            peice.style.transform =  'translate(-50%, -50%)' //
-           
-            
-        }else { 
-            peice =  Moveable[0]    
-        }
-        console.log(peice);
-        peice.style.top = touch.clientX
         
-        peice.style.top = `${touch.clientY}px`
-        peice.style.left = `${touch.clientX}px`
-        document.body.appendChild(peice)
-
         target.style
         if (target && target.classList.contains('peice')) {
             dropLetter = target
