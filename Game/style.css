@@ -5,7 +5,9 @@
 }
 
 .peice {
-    border: 1px solid black;
+    margin: 1px;
+    border: 2px solid black;
+    border-radius: 3px;
     text-align: center;
     display: flex;
     justify-content: center;

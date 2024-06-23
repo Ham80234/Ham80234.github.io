@@ -1,18 +1,20 @@
 let result = [
-    [' ', 'C', ' ', ' ', 'H'],
-    ['P', 'K', 'E', 'C', 'I'],
-    [' ', 'I', ' ', ' ', 'G'],
-    ['R', 'E', 'E', 'B', 'N'],
-    [' ', 'O', ' ', ' ', 'T']
+    [' ', 'D', ' ', 'S', ' '],
+    ['R', 'E', 'K', 'E', 'N'],
+    [' ', 'T', ' ', 'U', ' '],
+    ['F', 'E', 'K', 'S', 'S'],
+    [' ', 'R', ' ', 'S', ' ']
 ]
 
 let solved = [
-    [' ', 'C', ' ', ' ', 'N'],
-    ['O', 'R', 'I', 'B', 'I'],
-    [' ', 'E', ' ', ' ', 'G'],
-    ['K', 'E', 'E', 'C', 'H'],
-    [' ', 'P', ' ', ' ', 'T']
+    [' ', 'R', ' ', 'S', ' '],
+    ['D', 'E', 'S', 'K', 'S'],
+    [' ', 'F', ' ', 'U', ' '],
+    ['T', 'E', 'E', 'N', 'S'],
+    [' ', 'R', ' ', 'K', ' ']
 ]
+
+let score = []
 
 let Running = true;
 let moves = 0
@@ -22,24 +24,34 @@ let dropLetter = ''
 
     function setboard() {
         if (checkWin()) { 
-            console.log('winner')
-    
+
+            
+            score.shift()
+            console.log(score);
+
+            let s = document.getElementById('score')
+            s.style.display = 'flex'
+            
             setTimeout(shoot, 100)
             setTimeout(shoot, 200)
             setTimeout(shoot, 300)
-            
         }
         let board = document.getElementById("gameboard")
         board.innerHTML = ''
         result.forEach((item, idx) => {
             item.forEach((letter, idx2) => {
                 board.appendChild(createPeice(letter, [], idx, idx2))
-                
             })
         })
     }
 
     function checkWin() {
+        let amount = document.querySelectorAll('#gameboard > .peice')
+        let correct = document.querySelectorAll('#gameboard > .correct')
+        let partial = document.querySelectorAll('#gameboard > .partial')
+
+        score.push((correct.length + (partial.length/2))/amount.length)
+        console.log(score);
         return solved.map((row, i) => {
             return row.map((cell, j) => cell === result[i][j]).every(Boolean);
         }).every(Boolean);
@@ -58,8 +70,6 @@ let dropLetter = ''
             solved.forEach(i => col.push(i[pos2]))
             
             lettersToCheck = [[...getReleventLetters(row, pos1)], [...getReleventLetters(col, pos2)]]
-            console.log(row)
-            console.log(lettersToCheck.flat())
             if(letter == letterSolved) { 
                 return 'correct'
             }
@@ -89,8 +99,6 @@ let dropLetter = ''
     function drop(ev) {
         let movesDOM = document.getElementById('moves')
         dropLetter = ev.target
-        console.log(dropLetter);
-        console.log(`Moved Letter: ${letterMoving}, Dropped on: ${dropLetter}`);
         let LMpos1 = letterMoving.getAttribute('pos1')
         let LMpos2 = letterMoving.getAttribute('pos2')
         
@@ -119,6 +127,11 @@ let dropLetter = ''
         ev.preventDefault()
         let touch = ev.touches[0]
         let target = document.elementFromPoint(touch.clientX, touch.clientY)
+        target.style.position = 'relative'
+        target.style.left = ev.clientX - target.offsetWidth / 2 + 'px';
+        target.style.top = ev.clientY - target.offsetHeight / 2 + 'px';
+
+        target.style
         if (target && target.classList.contains('peice')) {
             dropLetter = target
         }
@@ -137,10 +150,11 @@ let dropLetter = ''
     
             result[DLpos1][DLpos2] = result[LMpos1][LMpos2]
             result[LMpos1][LMpos2] = temp
-    
-            moves += 1
-            let movesDOM = document.getElementById('moves')
-            movesDOM.innerHTML = moves
+            if (letterMoving != dropLetter) { 
+                moves += 1
+                let movesDOM = document.getElementById('moves')
+                movesDOM.innerHTML = moves
+            }
     
             setboard()
         }
@@ -166,7 +180,6 @@ let dropLetter = ''
             peice.draggable = true  
             classes.push(checkPeice(peice))
             peice.classList.add(...classes)
-            
           
         }
         return peice
@@ -201,3 +214,19 @@ let dropLetter = ''
         });
       }
       
+function copyScore() {
+
+    
+    
+    let date = new Date()
+    let res = `CrossDrop Score for ${date.getMonth()+1}/${date.getDate()}\n`
+    console.log(score);
+    score.forEach((percentage, idx) => {
+        let rating = ['🟥', '🟨', '🤏',]
+        res += `turn ${idx+1}: ${percentage * 100}%\n`
+    })
+
+    res += 'Crossdrop: https://ham80234.github.io/Game/redesign'
+    navigator.clipboard.writeText(res)
+    console.log(res);
+}
