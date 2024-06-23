@@ -215,9 +215,6 @@ let dropLetter = ''
       }
       
 function copyScore() {
-
-    
-    
     let date = new Date()
     let res = `CrossDrop Score for ${date.getMonth()+1}/${date.getDate()}\n`
     console.log(score);
@@ -228,5 +225,7 @@ function copyScore() {
 
     res += 'Crossdrop: https://ham80234.github.io/Game'
     navigator.clipboard.writeText(res)
-    console.log(res);
+    let checkmark = document.getElementById('checkmark')
+    checkmark.style.opacity = 100
+    setTimeout()
 }

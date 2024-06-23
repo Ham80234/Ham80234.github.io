@@ -10,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <link rel="stylesheet" href="styler.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
@@ -72,10 +76,13 @@
 
         </div>
     </div>
-    <div class="scoreholder"  id="score" style="display: none;">
+    <div class="scoreholder"  id="score"  style="display: none;">
     <button type="button"  class="btn btn-primary" onclick="copyScore()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Copy Score to Clipboard
     </button>
+    <div id="checkmark" class="checkmark animate__animated animate__slideInRight">
+      <i class="bi bi-check-circle-fill"></i>
+    </div>
   </div>
 
 </body>
