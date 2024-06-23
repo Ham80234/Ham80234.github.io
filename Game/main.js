@@ -23,6 +23,7 @@ let dropLetter = ''
     function setboard() {
         if (checkWin()) { 
             console.log('winner')
+    
             setTimeout(shoot, 100)
             setTimeout(shoot, 200)
             setTimeout(shoot, 300)
@@ -45,53 +46,38 @@ let dropLetter = ''
     }
 
     function checkPeice(item){
-        // //TODO FIX 
-        // let pos1 = item.getAttribute('pos1');
-        // let pos2 = item.getAttribute('pos2');
-        // let letter = item.innerHTML
-        // let letterSolved = solved[pos1][pos2]
-
-        // if (letter == letterSolved) { 
-        //     return  'correct'
-        // }
-
-        // let row = []
-        // solved.forEach(row => row.push([row[pos1]]))
-        // let col = []
-
-        // solved.forEach(i => col.push(i[pos2]))
-        // console.log(row);
-        // // console.log(col);
-
-        // if (row.includes(letter)) {
-        //     return 'partial'
-        // }
-
-        // if (col.includes(letter)) {
-        //     return 'partial'
-        // }
         if (Running){
             let pos1 = item.getAttribute('pos1')
             let pos2 = item.getAttribute('pos2')
             let letter = item.innerHTML
             const letterSolved = solved[pos1][pos2]
 
+            let lettersToCheck = []
+            let row = solved[pos1]
+            let col = []
+            solved.forEach(i => col.push(i[pos2]))
             
-
-            if (letter == letterSolved) { 
+            lettersToCheck = [[...getReleventLetters(row, pos1)], [...getReleventLetters(col, pos2)]]
+            console.log(row)
+            console.log(lettersToCheck.flat())
+            if(letter == letterSolved) { 
                 return 'correct'
             }
-
-            let row = []
-            let col = []
-
-            row = solved[pos1]
-            solved.forEach(i => col.push(i[pos2]))
-            console.log(col);
-            if ([...col, ...row].includes(letter)){
+            if (lettersToCheck.flat().includes(letter)){
                 return 'partial'
             }
     }
+    }
+
+    function getReleventLetters(arr, pos) {
+        // if no spaces then return full row, 
+        // if a space on both sides just retrun the letter
+
+        if (!arr.some(item => item.split(',')[0] === ' ')){
+            return arr
+        }else {
+            return [arr[pos]]
+        }
     }
 
 
