@@ -1,17 +1,20 @@
 let result = [
-    ['M', ' ', ' ', ' ', 'L'],
-    ['U', ' ', ' ', ' ', 'X'],
-    ['M', 'I', 'A', 'E', 'H'],
-    ['E', ' ', ' ', ' ', 'S']
+    [' ', 'C', ' ', ' ', 'H'],
+    ['P', 'K', 'E', 'C', 'I'],
+    [' ', 'I', ' ', ' ', 'G'],
+    ['R', 'E', 'E', 'B', 'N'],
+    [' ', 'O', ' ', ' ', 'T']
 ]
 
 let solved = [
-    ['A', ' ', ' ', ' ', 'M'],
-    ['X', ' ', ' ', ' ', 'U'],
-    ['L', 'I', 'M', 'E', 'S'],
-    ['E', ' ', ' ', ' ', 'H']
+    [' ', 'C', ' ', ' ', 'N'],
+    ['O', 'R', 'I', 'B', 'I'],
+    [' ', 'E', ' ', ' ', 'G'],
+    ['K', 'E', 'E', 'C', 'H'],
+    [' ', 'P', ' ', ' ', 'T']
 ]
 
+let Running = true;
 let moves = 0
 
 let letterMoving = ''
@@ -42,29 +45,53 @@ let dropLetter = ''
     }
 
     function checkPeice(item){
-        let pos1 = item.getAttribute('pos1');
-        let pos2 = item.getAttribute('pos2');
-        let letter = item.innerHTML
-        let letterSolved = solved[pos1][pos2]
+        // //TODO FIX 
+        // let pos1 = item.getAttribute('pos1');
+        // let pos2 = item.getAttribute('pos2');
+        // let letter = item.innerHTML
+        // let letterSolved = solved[pos1][pos2]
 
-        if (letter == letterSolved) { 
-            return  'correct'
-        }
+        // if (letter == letterSolved) { 
+        //     return  'correct'
+        // }
 
-        let row = []
-        row.forEach(row => row.push([row[pos1]]))
-        let col = []
+        // let row = []
+        // solved.forEach(row => row.push([row[pos1]]))
+        // let col = []
 
-        solved.forEach(i => col.push(i[pos2]))
+        // solved.forEach(i => col.push(i[pos2]))
+        // console.log(row);
+        // // console.log(col);
 
-        if (row.includes(letter)) {
-            return 'partial'
-        }
+        // if (row.includes(letter)) {
+        //     return 'partial'
+        // }
 
-        if (col.includes(letter)) {
-            return 'partial'
-        }
+        // if (col.includes(letter)) {
+        //     return 'partial'
+        // }
+        if (Running){
+            let pos1 = item.getAttribute('pos1')
+            let pos2 = item.getAttribute('pos2')
+            let letter = item.innerHTML
+            const letterSolved = solved[pos1][pos2]
 
+            
+
+            if (letter == letterSolved) { 
+                return 'correct'
+            }
+
+            let row = []
+            let col = []
+
+            row = solved[pos1]
+            solved.forEach(i => col.push(i[pos2]))
+            console.log(col);
+            if ([...col, ...row].includes(letter)){
+                return 'partial'
+            }
+    }
     }
 
 

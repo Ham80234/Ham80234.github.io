@@ -1,7 +1,7 @@
 #gameboard {
     display: grid;
     grid-template-columns: 4rem 4rem 4rem 4rem 4rem;
-    grid-template-rows: 4rem 4rem 4rem 4rem;
+    grid-template-rows: 4rem 4rem 4rem 4rem 4rem;
 }
 
 .peice {
