@@ -127,7 +127,10 @@ let dropLetter = ''
         ev.preventDefault()
         let touch = ev.touches[0]
         let target = document.elementFromPoint(touch.clientX, touch.clientY)
-        
+        target.style.position = 'relative'
+        target.style.left = ev.clientX - target.offsetWidth / 2 + 'px';
+        target.style.top = ev.clientY - target.offsetHeight / 2 + 'px';
+
         target.style
         if (target && target.classList.contains('peice')) {
             dropLetter = target
@@ -152,8 +155,6 @@ let dropLetter = ''
                 let movesDOM = document.getElementById('moves')
                 movesDOM.innerHTML = moves
             }
-            let remove = document.getElementsByClassName('dragItem')[0]
-            document.body.removeChild(remove)
     
             setboard()
         }
