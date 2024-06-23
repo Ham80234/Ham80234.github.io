@@ -226,7 +226,7 @@ function copyScore() {
         res += `turn ${idx+1}: ${percentage * 100}%\n`
     })
 
-    res += 'Crossdrop: https://ham80234.github.io/Game/redesign'
+    res += 'Crossdrop: https://ham80234.github.io/Game'
     navigator.clipboard.writeText(res)
     console.log(res);
 }
