@@ -29,11 +29,11 @@ body {
 }
 
 .correct { 
-    background-color: #a7c957;
+    background-color: #a7c957 !important;
 }
 
 .partial { 
-    background-color: #f3de2c;
+    background-color: #f3de2c !important;
 }
 
 .gameContainer { 
