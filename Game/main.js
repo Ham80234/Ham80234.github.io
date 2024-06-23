@@ -82,7 +82,7 @@ let dropLetter = ''
     function getReleventLetters(arr, pos) {
         // if no spaces then return full row, 
         // if a space on both sides just retrun the letter
-
+         
         if (!arr.some(item => item.split(',')[0] === ' ')){
             return arr
         }else {
@@ -195,7 +195,7 @@ let dropLetter = ''
         decay: 0.94,
         startVelocity: 30,
         shapes: ["star"],
-        colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+        colors: ["a7c957", "f3de2c"],
       };
       
       function shoot() {
