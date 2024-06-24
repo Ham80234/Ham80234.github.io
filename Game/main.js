@@ -1,6 +1,6 @@
 let result = [
   ["I", "Q", "E", "E", "N"],
-  ["P", " ", "P", " ", "Y"],
+  ["P", " ", "R", " ", "Y"],
   ["P", " ", "S", " ", "T"],
   ["E", "R", "E", "W", "D"],
   ["U", " ", "A", " ", "S"],
@@ -39,7 +39,6 @@ let dropLetter = "";
 function setboard() {
   if (checkWin()) {
     score.shift();
-    console.log(score);
 
     let s = document.getElementById("score");
     s.style.display = "flex";
@@ -63,7 +62,7 @@ function checkWin() {
   let partial = document.querySelectorAll("#gameboard > .partial");
 
   score.push((correct.length + partial.length / 2) / amount.length);
-  console.log(score);
+
   return solved
     .map((row, i) => {
       return row.map((cell, j) => cell === result[i][j]).every(Boolean);
@@ -87,8 +86,6 @@ function checkPeice(item) {
       [...getReleventLetters(row, pos1, letter)],
       [...getReleventLetters(col, pos2, letter)],
     ];
-    console.log(letter);
-    console.log(lettersToCheck);
     if (letter == letterSolved) {
       return "correct";
     }
@@ -103,11 +100,12 @@ function getReleventLetters(arr, pos, letter) {
   // if a space on both sides just retrun the letter
     let res = []
   if (!arr.some((item) => item == " ")) {
-    res +=  arr;
+    res =  arr
   } else {
-    res += "";
+    res = [ ]
   }
-
+  //filter out solved 
+  
   return res
 }
 
@@ -230,10 +228,9 @@ function shoot() {
 function copyScore() {
   let date = new Date();
   let res = `CrossDrop Score for ${date.getMonth() + 1}/${date.getDate()}\n`;
-  console.log(score);
   score.forEach((percentage, idx) => {
     let rating = ["🟥", "🟨", "🤏"];
-    res += `turn ${idx + 1}: ${percentage * 100}%\n`;
+    res += `turn ${idx + 1}: ${parseFloat(percentage*100).toFixed(2)}%\n`;
   });
 
   res += "Crossdrop: https://ham80234.github.io/Game";
