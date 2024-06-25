@@ -1,17 +1,17 @@
 let result = [
-    ["O", "S", "A", "H", "M"],
-    ["S", " ", "A", " ", "F"],
-    ["C", " ", "E", " ", "P"],
-    ["P", "K", "R", "E", "O"],
-    ["H", " ", "F", " ", "R"]
-  ];
+    ["K", "S", "O", "E", "U"],
+    ["S", " ", " ", "U", " "],
+    ["A", " ", " ", "O", " "],
+    ["Q", "T", "T", "P", "C"],
+    ["E", " ", " ", "I", " "]
+  ]
 
 let solved = [
-  ["C", "H", "O", "P", "S"],
-  ["R", " ", "F", " ", "M"],
-  ["A", " ", "F", " ", "O"],
-  ["S", "P", "E", "A", "K"],
-  ["H", " ", "R", " ", "E"],
+  ["Q", "U", "E", "S", "T"],
+  ["U", " ", " ", "P", " "],
+  ["O", " ", " ", "O", " "],
+  ["T", "I", "C", "K", "S"],
+  ["A", " ", " ", "E", " "],
 ];
 function scramble(arr) {
   let res = arr.flat();
@@ -28,7 +28,7 @@ function scramble(arr) {
   console.log(res);
 }
 
-scramble(solved)
+scramble(solved);
 
 let score = [];
 
@@ -100,15 +100,15 @@ function checkPeice(item) {
 function getReleventLetters(arr, pos, letter) {
   // if no spaces then return full row,
   // if a space on both sides just retrun the letter
-    let res = []
+  let res = [];
   if (!arr.some((item) => item == " ")) {
-    res =  arr
+    res = arr;
   } else {
-    res = [ ]
+    res = [];
   }
-  //filter out solved 
-  
-  return res
+  //filter out solved
+
+  return res;
 }
 
 function allowDrop(ev) {
@@ -232,7 +232,7 @@ function copyScore() {
   let res = `CrossDrop Score for ${date.getMonth() + 1}/${date.getDate()}\n`;
   score.forEach((percentage, idx) => {
     let rating = ["🟥", "🟨", "🤏"];
-    res += `turn ${idx + 1}: ${parseFloat(percentage*100).toFixed(2)}%\n`;
+    res += `turn ${idx + 1}: ${parseFloat(percentage * 100).toFixed(2)}%\n`;
   });
 
   res += "Crossdrop: https://ham80234.github.io/Game";
