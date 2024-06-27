@@ -1,17 +1,17 @@
 let result = [
-  ["S", "Y", "D", "D", "R"],
-  ["H", " ", " ", "E", " "],
-  ["S", "S", "Y", "E", "A"],
-  ["G", " ", " ", "H", " "],
-  ["S", "I", "H", "A", "S"],
-];
+  ["E", "I", "R", "A", "W"],
+  ["N", " ", " ", "A", " "],
+  ["F", "D", "H", "F", "H"],
+  ["X", " ", " ", "E", " "],
+  ["F", " ", " ", "T", " "]
+]
 
 let solved = [
-  ["S", "I", "G", "H", "S"],
-  ["H", " ", " ", "E", " "],
-  ["E", "S", "S", "A", "Y"],
-  ["D", " ", " ", "R", " "],
-  ["S", "H", "A", "D", "Y"],
+  ["D", "E", "A", "T", "H"],
+  ["R", " ", " ", "H", " "],
+  ["A", "F", "F", "I", "X"],
+  ["W", " ", " ", "E", " "],
+  ["N", " ", " ", "F", " "],
 ];
 
 
@@ -174,9 +174,8 @@ function touchEnd(ev) {
       moves += 1;
       let movesDOM = document.getElementById("moves");
       movesDOM.innerHTML = moves;
+      setboard();
     }
-
-    setboard();
   }
 }
 
