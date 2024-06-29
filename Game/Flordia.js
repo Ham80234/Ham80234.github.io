@@ -213,7 +213,7 @@ function drop(ev) {
   result[DLpos1][DLpos2] = result[LMpos1][LMpos2];
 
   result[LMpos1][LMpos2] = temp;
-  if (letterMoving != dropLetter && !dropLetter.classList.contains('correct')) {
+  if (letterMoving != dropLetter && !dropLetter.classList.contains('correct') && !letterMoving.classList.contains('correct')) {
     moves += 1;
     movesDOM.innerHTML = moves;
     setboard();
@@ -221,7 +221,9 @@ function drop(ev) {
 }
 
 function drag(ev) {
-  letterMoving = ev.target;
+  if(!ev.target.classList.contains('correct')) {
+    letterMoving = ev.target;
+  }
 }
 
 function touchMove(ev) {
@@ -251,7 +253,7 @@ function touchEnd(ev) {
 
     result[DLpos1][DLpos2] = result[LMpos1][LMpos2];
     result[LMpos1][LMpos2] = temp;
-    if (letterMoving != dropLetter && !dropLetter.classList.contains('correct')) {
+    if (letterMoving != dropLetter && !dropLetter.classList.contains('correct') && !letterMoving.classList.contains('correct')) {
       moves += 1;
       let movesDOM = document.getElementById("moves");
       movesDOM.innerHTML = moves;
