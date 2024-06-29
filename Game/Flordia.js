@@ -86,9 +86,10 @@ let resultArr = [
         ["T", "O", "A", "D", "S"]
     ]
 ]
+let score = [];
 let dayOfweek = new Date()
-let solved = solvedArr[dayOfweek.getDay() % resultArr.length +1]
-let result = resultArr[dayOfweek.getDay() % resultArr.length +1]
+let solved = solvedArr[dayOfweek.getDay() % 5]
+let result = resultArr[dayOfweek.getDay() % 5]
   
   function scramble(arr) {
     let res = arr.flat();
@@ -107,7 +108,7 @@ let result = resultArr[dayOfweek.getDay() % resultArr.length +1]
   
   scramble(solved);
   
-  let score = [];
+  
   
   let Running = true;
   let moves = 0;

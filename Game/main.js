@@ -102,6 +102,17 @@ function checkPeice(item) {
 function getReleventLetters(arr, pos, letter) {
   // if no spaces then return full row,
   // if a space on both sides just retrun the letter
+
+  /**
+   *  letter = K
+   *  row [s, p, e, c, k] solved
+   *  row [k k c e b] result
+   * 
+   *  
+   *  im looking at a k is there multiple Ks in the solved column if so how many (n) , then color n number
+   *  
+   * 
+   */
   let res = [];
   if (!arr.some((item) => item == " ")) {
     res = arr;
