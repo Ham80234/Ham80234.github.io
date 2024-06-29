@@ -88,8 +88,8 @@ let resultArr = [
 ]
 let score = [];
 let dayOfweek = new Date()
-let solved = solvedArr[dayOfweek.getDay() % 5]
-let result = resultArr[dayOfweek.getDay() % 5]
+let solved = solvedArr[dayOfweek.getDay() % 6]
+let result = resultArr[dayOfweek.getDay() % 6]
   
   function scramble(arr) {
     let res = arr.flat();
