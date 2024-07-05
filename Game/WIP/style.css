@@ -22,14 +22,16 @@
     width: 2rem;
     height: 2rem;
 }
-.letter:hover { 
-    margin-top: 10px;
-    transition: margin .3s;
-}
 .correct { 
     background-color: #a7c957;
 }
 
 .partial { 
     background-color: #f3de2c;
+}
+
+#board { 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
