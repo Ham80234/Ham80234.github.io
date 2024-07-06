@@ -8,6 +8,7 @@
  * }
  */
 
+import { setItem } from './localStorage'
 
 let currentBoard = [
   ["S", "C", "T", "Y", "A"],
@@ -35,7 +36,8 @@ let init = (boardState) =>  {
                 letter : letter,
                 correct: false,
                 partial: false,
-                position: [j, i]
+                position: [j, i],
+                blank: letter == ' ' ? true : false
             }
             objArr.push(temp)
         })
@@ -45,8 +47,9 @@ let init = (boardState) =>  {
 }
 
 let createBoard = (board) => {
-    let boardCurrent = init(boardCurrent)
-   
+    let boardCurrent = init(currentBoard)
+    from.setItem('board', boardCurrent)
+
 };
 createBoard('document.get', currentBoard)
 
