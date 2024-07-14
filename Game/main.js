@@ -1,20 +1,18 @@
 let result = [
-  ["A", "I", "T", "R", "C"],
-  ["W", " ", " ", "D", " "],
-  ["V", " ", " ", "L", " "],
-  ["E", "I", "I", "I", "C"],
-  ["L", " ", " ", "K", " "]
-]
-
-
-let solved = [
-  ["C", "L", "I", "C", "K"],
-  ["E", " ", " ", "I", " "],
-  ["D", " ", " ", "V", " "],
-  ["A", "W", "I", "I", "T"],
-  ["R", " ", " ", "L", " "],
+  ["R", "R", "L", "Y", "Y"],
+  ["O", " ", " ", "E", " "],
+  ["L", "N", "V", "R", "E"],
+  ["M", " ", " ", "A", " "],
+  ["X", " ", " ", "A", " "],
 ];
 
+let solved = [
+  ["M", "E", "L", "O", "N"],
+  ["A", " ", " ", "V", " "],
+  ["R", "E", "L", "A", "X"],
+  ["R", " ", " ", "R", " "],
+  ["Y", " ", " ", "Y", " "],
+];
 
 function scramble(arr) {
   let res = arr.flat();
@@ -108,11 +106,11 @@ function getReleventLetters(arr, pos, letter) {
    *  letter = K
    *  row [s, p, e, c, k] solved
    *  row [k k c e b] result
-   * 
-   *  
+   *
+   *
    *  im looking at a k is there multiple Ks in the solved column if so how many (n) , then color n number
-   *  
-   * 
+   *
+   *
    */
   let res = [];
   if (!arr.some((item) => item == " ")) {
