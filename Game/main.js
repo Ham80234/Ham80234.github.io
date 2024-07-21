@@ -158,9 +158,11 @@ function touchMove(ev) {
   ev.preventDefault();
   let touch = ev.touches[0];
   let target = document.elementFromPoint(touch.clientX, touch.clientY);
+  target.classList.add('dragging')
   target.style.position = "relative";
   target.style.left = ev.clientX - target.offsetWidth / 2 + "px";
   target.style.top = ev.clientY - target.offsetHeight / 2 + "px";
+
 
   target.style;
   if (target && target.classList.contains("peice")) {
