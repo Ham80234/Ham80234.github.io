@@ -1,3 +1,4 @@
+
 let result = [
   ["S", "U", "M", "H", "U"],
   ["L", " ", " ", "S", " "],
@@ -26,7 +27,12 @@ function scramble(arr) {
       res[b] = temp;
     }
   }
-  console.log(res);
+  let result = []
+  for (let i = 0; i < 5; i++) {
+    let r = res.slice((i * 5), (i*5)+5)
+    result.push(r)
+  }
+  console.log(result);
 }
 
 scramble(solved);
