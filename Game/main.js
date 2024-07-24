@@ -1,18 +1,17 @@
 let result = [
-  ["A", "L", "S", "E", "E"],
-  ["A", " ", " ", "X", " "],
-  ["I", " ", " ", "D", " "],
-  ["S", "E", "S", "S", "E"],
-  ["B", " ", " ", "A", " "]
-]
-
+  ["S", "U", "M", "H", "U"],
+  ["L", " ", " ", "S", " "],
+  ["H", "A", "Y", "K", "S"],
+  ["E", " ", " ", "P", " "],
+  ["I", " ", " ", "L", " "],
+];
 
 let solved = [
-  ["B", "E", "A", "D", "S"],
-  ["A", " ", " ", "E", " "],
-  ["S", " ", " ", "A", " "],
-  ["E", "X", "I", "L", "E"],
-  ["S", " ", " ", "S", " "],
+  ["H", "I", "L", "L", "S"],
+  ["U", " ", " ", "U", " "],
+  ["S", "H", "A", "M", "E"],
+  ["K", " ", " ", "P", " "],
+  ["Y", " ", " ", "S", " "],
 ];
 
 function scramble(arr) {
@@ -158,11 +157,7 @@ function touchMove(ev) {
   ev.preventDefault();
   let touch = ev.touches[0];
   let target = document.elementFromPoint(touch.clientX, touch.clientY);
-  target.classList.add('dragging')
-  target.style.position = "relative";
-  target.style.left = ev.clientX - target.offsetWidth / 2 + "px";
-  target.style.top = ev.clientY - target.offsetHeight / 2 + "px";
-
+  target.classList.add("dragging");
 
   target.style;
   if (target && target.classList.contains("peice")) {

@@ -9,6 +9,9 @@ var initialY;
 var xOffset = 0;
 var yOffset = 0;
 
+
+
+
 container.addEventListener("touchstart", dragStart, false);
 container.addEventListener("touchend", dragEnd, false);
 container.addEventListener("touchmove", drag, false);
