@@ -1,18 +1,17 @@
-
 let result = [
-  ["S", "U", "M", "H", "U"],
-  ["L", " ", " ", "S", " "],
-  ["H", "A", "Y", "K", "S"],
-  ["E", " ", " ", "P", " "],
-  ["I", " ", " ", "L", " "],
+  ["P", "H", "X", "P", "O"],
+  ["T", " ", "R", " ", "E"],
+  ["S", " ", "O", " ", "C"],
+  ["A", "A", "R", "S", "E"],
+  ["E", " ", "S", " ", "S"],
 ];
 
 let solved = [
-  ["H", "I", "L", "L", "S"],
-  ["U", " ", " ", "U", " "],
-  ["S", "H", "A", "M", "E"],
-  ["K", " ", " ", "P", " "],
-  ["Y", " ", " ", "S", " "],
+  ["H", "E", "A", "P", "S"],
+  ["O", " ", "R", " ", "O"],
+  ["P", " ", "E", " ", "R"],
+  ["E", "X", "A", "C", "T"],
+  ["S", " ", "S", " ", "S"],
 ];
 
 function scramble(arr) {
@@ -27,10 +26,10 @@ function scramble(arr) {
       res[b] = temp;
     }
   }
-  let result = []
+  let result = [];
   for (let i = 0; i < 5; i++) {
-    let r = res.slice((i * 5), (i*5)+5)
-    result.push(r)
+    let r = res.slice(i * 5, i * 5 + 5);
+    result.push(r);
   }
   console.log(result);
 }
