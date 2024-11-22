@@ -26,7 +26,16 @@ li {
     align-items: center;
     cursor: grab;
 }
-
+/* .draggable-mirror {
+    border-radius: 3px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    padding: 1rem;
+} */
+    
 .dragging { 
     position: relative;
 }

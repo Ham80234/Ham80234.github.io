@@ -1,3 +1,6 @@
+
+
+  
 let result = [
   ["P", "H", "X", "P", "O"],
   ["T", " ", "R", " ", "E"],
@@ -54,14 +57,15 @@ function setboard() {
     setTimeout(shoot, 100);
     setTimeout(shoot, 200);
     setTimeout(shoot, 300);
-  }
-  let board = document.getElementById("gameboard");
-  board.innerHTML = "";
-  result.forEach((item, idx) => {
-    item.forEach((letter, idx2) => {
-      board.appendChild(createPeice(letter, [], idx, idx2));
+  }else{
+    let board = document.getElementById("gameboard");   
+    board.textContent = "";
+    result.forEach((item, idx) => {
+      item.forEach((letter, idx2) => {
+        board.appendChild(createPeice(letter, [], idx, idx2));
+      });
     });
-  });
+  }
 }
 
 function checkWin() {
@@ -155,39 +159,55 @@ function drop(ev) {
 }
 
 function drag(ev) {
-  letterMoving = ev.target;
+    // console.log(ev.data.dragEvent.data.over);
+    
+    dropLetter = ev.data.dragEvent.data.over;
 }
 
 function touchMove(ev) {
-  ev.preventDefault();
-  let touch = ev.touches[0];
+    // console.log('touchmove');
+    
+    // console.log(ev.data.dragEvent.data.sensorEvent)
+  let touch = ev.data.dragEvent.data.sensorEvent;
   let target = document.elementFromPoint(touch.clientX, touch.clientY);
-  target.classList.add("dragging");
+  letterMoving = target
+//   console.log(target);
+//   dropLetter = document.elementFromPoint(touch.clientX, touch.clientY);
+//   console.log(dropLetter    );
+  
+//   target.classList.add("dragging");
 
-  target.style;
-  if (target && target.classList.contains("peice")) {
-    dropLetter = target;
-  }
+//   target.style;
+
 }
 
 function touchEnd(ev) {
-  ev.preventDefault();
+    console.log(letterMoving);
+    console.log(dropLetter);
+    
+    // dropLetter = ev.data.dragEvent.data.source
   if (dropLetter) {
+    console.log('touchEnd');
+
     let LMpos1 = letterMoving.getAttribute("pos1");
     let LMpos2 = letterMoving.getAttribute("pos2");
 
     let DLpos1 = dropLetter.getAttribute("pos1");
     let DLpos2 = dropLetter.getAttribute("pos2");
 
-    let temp = result[DLpos1][DLpos2];
+    console.log(LMpos1, LMpos2, DLpos1, DLpos2);
+    
+    let temp = result[LMpos1][LMpos2];
 
-    result[DLpos1][DLpos2] = result[LMpos1][LMpos2];
-    result[LMpos1][LMpos2] = temp;
-    if (letterMoving != dropLetter) {
+    result[LMpos1][LMpos2] = result[DLpos1][DLpos2];
+    result[DLpos1][DLpos2] = temp;
+    if (letterMoving != dropLetter) {        
       moves += 1;
       let movesDOM = document.getElementById("moves");
       movesDOM.innerHTML = moves;
       setboard();
+    console.log(result);
+    
     }
   }
 }
@@ -201,9 +221,9 @@ function createPeice(content, classes = [], pos1, pos2) {
 
     peice.setAttribute("pos1", pos1);
     peice.setAttribute("pos2", pos2);
-    // peice.addEventListener("touchstart", drag, false);
-    // peice.addEventListener("touchmove", touchMove, false);
-    // peice.addEventListener("touchend", touchEnd, false);
+    peice.addEventListener("touchstart", drag, false);
+    peice.addEventListener("touchmove", touchMove, false);
+    peice.addEventListener("touchend", touchEnd, false);
     peice.pos2 = pos2;
     peice.ondragstart = drag;
     peice.ondrop = drop;
