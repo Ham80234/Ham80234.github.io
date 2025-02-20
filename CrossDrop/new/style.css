@@ -1,46 +1,46 @@
  /* Grid container styling */
  .grid {
-    display: grid;
-    grid-template-columns: repeat(5, 50px);
-    grid-gap: 10px;
-    width: max-content;
-    margin: 50px auto;
-  }
-  /* Individual block styling */
-  .grid-item {
-    width: 50px;
-    height: 50px;
-    background-color: #4CAF50;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 2px solid black;
-    touch-action: none; /* Prevents browser handling of touch gestures */
-    user-select: none;
-    transition: transform 0.2s ease;
-    position: relative;
-  }
-  .blank_space{
-    width: 50px;
-    height: 50px;
-    background-color: #ffffff;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    touch-action: none; /* Prevents browser handling of touch gestures */
-    user-select: none;
-    transition: transform 0.2s ease;
-    position: relative;
-  }
-  /* Styling for the item being dragged */
-  .dragging {
-    opacity: 0.8;
-    z-index: 1000;
-    /* Optional: add a slight scale change */
-    transform: scale(1.05);
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 10px;
+  width: max-content;
+  margin: 50px auto;
+}
+/* Individual block styling */
+.grid-item {
+  width: 50px;
+  height: 50px;
+  background-color: #4CAF50;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 2px solid black;
+  touch-action: none; /* Prevents browser handling of touch gestures */
+  user-select: none;
+  transition: transform 0.05s ease;
+  position: relative;
+}
+.blank_space{
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  touch-action: none; /* Prevents browser handling of touch gestures */
+  user-select: none;
+  transition: transform 0.05s ease;
+  position: relative;
+}
+/* Styling for the item being dragged */
+.dragging {
+  opacity: 0.8;
+  z-index: 1000;
+  /* Optional: add a slight scale change */
+  transform: scale(1.05);
+}
