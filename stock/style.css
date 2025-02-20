@@ -1,45 +1,15 @@
-.letter { 
-    font-size: 7rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.container {
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
 }
-#letters { 
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    width: 100vw;
-    height: 100vh;
+.box { 
+    width: 50px;
+    height: 50px;
+    background: red;
     text-align: center;
-}
-
-h1 { 
-    font-size: 3rem;
-    --animate-delay: 1s;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.left { 
-    --animate-delay: 2s;
- }
-.word { 
-    display: flex;
-}
-
-.ques { 
-
-    float: right;
-}
-.hide { 
-    display: none;
-}
-.container { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-
-#click{
+    align-content: center;
+    color: aliceblue;
+    cursor: grab;
     position: absolute;
-    width: 300px;
-    height: 300px;
 }

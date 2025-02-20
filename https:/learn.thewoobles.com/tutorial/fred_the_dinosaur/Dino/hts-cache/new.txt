@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+21:14:44	5816/5816	---MCZ	200	added ('OK')	text/html	etag:W/%223807481a5a3343e9e141f55d694ffc4f%22	https://learn.thewoobles.com/tutorial/fred_the_dinosaur	https://learn.thewoobles.com/tutorial/fred_the_dinosaur/Dino/learn.thewoobles.com/tutorial/fred_the_dinosaur.html	(from )
+21:14:45	71/71	---M--	200	added ('OK')	text/plain	etag:%22e22ec77afc1eb0ae1c4db631ecba94a7%22	https://learn.thewoobles.com/robots.txt		(from )
