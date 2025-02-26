@@ -43,5 +43,6 @@
   z-index: 1000;
   /* Optional: add a slight scale change */
   transform: scale(1.05);
-  background-color: aqua;
+  background-color: #9d96d6 !important;
+  opacity: 0.7;
 }
