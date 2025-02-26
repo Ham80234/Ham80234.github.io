@@ -111,7 +111,13 @@ window.onload = function () {
       let text = element.innerHTML
       let x = element.getAttribute('x')
       let y = element.getAttribute('y')
-      console.log(solved[x][y] + ' ' + text);
+
+      if (JSON.stringify(solved) === JSON.stringify(gameboard)) {
+        setTimeout(shoot, 0);
+        setTimeout(shoot, 100);
+        setTimeout(shoot, 200);
+        setTimeout(shoot, 300);
+      }
 
       let col = []
 
@@ -128,8 +134,6 @@ window.onload = function () {
       }
       
     }
-
-    console.log(items);
     
   }
 
@@ -218,5 +222,35 @@ window.onload = function () {
     el1.addEventListener('pointerdown', onPointerDown);
     el2.addEventListener('pointerdown', onPointerDown);
   }
+
+
+
+  const defaults = {
+    spread: 360,
+    ticks: 50,
+    gravity: 0,
+    decay: 0.94,
+    startVelocity: 30,
+    shapes: ["star"],
+    colors: [correct, partial],
+  };
+  
+  function shoot() {
+    confetti({
+      ...defaults,
+      particleCount: 40,
+      scalar: 1.2,
+      shapes: ["star"],
+    });
+  
+    confetti({
+      ...defaults,
+      particleCount: 10,
+      scalar: 0.75,
+      shapes: ["circle"],
+    });
+  }
+
+  
 }
 
