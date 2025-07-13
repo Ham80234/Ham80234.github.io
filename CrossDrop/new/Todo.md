@@ -1,0 +1,6 @@
+- [ ] Add Modal explaining play
+- [ ] add Main landing page
+- [ ] add Session storage
+- [ ] add ad screen 
+- [ ] beta test 
+- [ ] add automatic puzzle job 
