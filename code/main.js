@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const spots = document.querySelectorAll(".spot");
   const buttons = document.querySelectorAll("button");
-  const correctCode = "1024";
+  const correctCode = "122025";
   let input = "";
 
   buttons.forEach((btn) => {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input = "";
       } else if (/[0-9]/.test(text)) {
         // Add digit (max 4)
-        if (input.length < 4) input += text;
+        if (input.length < 6) input += text;
       }
 
       // Update visual spots

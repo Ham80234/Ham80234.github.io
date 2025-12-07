@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeMail Client</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --bg-light: #f4f6f8;
+            --border: #e1e4e8;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body, html { height: 100%; overflow: hidden; background-color: var(--bg-light); }
+
+        /* --- LOGIN SCREEN STYLES --- */
+        #login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #bbc6f6 0%, #362f3d 100%);
+        }
+
+        .login-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-card h2 { margin-bottom: 1.5rem; color: var(--text-dark); }
+
+        .input-group { margin-bottom: 1rem; text-align: left; }
+        .input-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-light); }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        .btn-login:hover { background-color: #357abd; }
+        .error-msg { color: #e74c3c; font-size: 0.9rem; margin-top: 1rem; display: none; }
+
+        /* --- EMAIL APP STYLES --- */
+        #email-app {
+            display: none; /* Hidden by default */
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 250px 350px 1fr; /* Sidebar | List | Content */
+            grid-template-rows: 60px 1fr; /* Header | Body */
+        }
+
+        /* Header */
+        header {
+            grid-column: 1 / -1;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #f9fafb;
+            border-right: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+        }
+        .sidebar button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .sidebar button.active { background-color: #e3e8ee; color: var(--primary); font-weight: 600; }
+
+        /* Email List */
+        .email-list {
+            background-color: var(--white);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+        }
+        .email-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .email-item:hover { background-color: #f7f9fa; }
+        .email-item.selected { background-color: #eef4fb; border-left: 4px solid var(--primary); }
+        .email-sender { font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+        .email-subject { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 4px; }
+        .email-preview { font-size: 0.8rem; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Email Content (Reading Pane) */
+        .email-content {
+            background-color: var(--white);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .content-placeholder {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            flex-direction: column;
+        }
+        .email-view-header { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .view-subject { font-size: 1.5rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .view-meta { color: var(--text-light); font-size: 0.9rem; display: flex; justify-content: space-between; }
+        .view-body { line-height: 1.6; color: #444; }
+
+        /* Utility to toggle views */
+        .hidden { display: none !important; }
+        .logo {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-card">
+            <img class="logo" src="./logo.png" alt="">
+            <h2>Photon Email</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email-input" value="user@fake.com" placeholder="Enter email">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password-input" value="password" placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn-login">Sign In</button>
+                <p class="error-msg" id="login-error">Invalid credentials.</p>
+            </form>
+        </div>
+    </div>
+
+    <div id="email-app" class="hidden">
+        <header>
+            <h3>Welcome back, Tyler</h3>
+            <div id="user-display">t@fake.com</div>
+        </header>
+
+        <aside class="sidebar">
+            <button class="active">📥 Inbox</button>
+        </aside>
+
+        <div class="email-list" id="email-list-container">
+            </div>
+
+        <main class="email-content" id="email-content-view">
+            <div class="content-placeholder">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✉️</div>
+                <p>Select an email to read</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const emails = [
+            {
+                id: 1,
+                sender: "Boss",
+                email: "boss@company.com",
+                subject: "Urgent: Project Deadline",
+                time: "10:30 AM",
+                body: "Hi,<br><br>We need to discuss the Q4 roadmap. Please meet me in my office in 10 minutes.<br><br>Regards,<br>The Boss"
+            },
+            {
+                id: 2,
+                sender: "Netflix",
+                email: "info@netflix.com",
+                subject: "New login from a new device",
+                time: "09:15 AM",
+                body: "Hello,<br><br>We noticed a login to your account from a new device in Antarctica. Was this you?<br><br>If not, please change your password immediately."
+            },
+            {
+                id: 3,
+                sender: "Mom",
+                email: "mom@family.com",
+                subject: "Dinner this weekend?",
+                time: "Yesterday",
+                body: "Hey honey!<br><br>Are you coming over for dinner this Sunday? I'm making lasagna.<br><br>Love,<br>Mom"
+            },
+            {
+                id: 4,
+                sender: "HR Department",
+                email: "hr@company.com",
+                subject: "Open Enrollment",
+                time: "Yesterday",
+                body: "Dear Employee,<br><br>It is time to choose your benefits for the upcoming year. Please log in to the portal to make your selections.<br><br>Best,<br>HR Team"
+            },
+            {
+                id: 5,
+                sender: "Nigerian Prince",
+                email: "prince@royalty.ng",
+                subject: "Business Opportunity $$$",
+                time: "Monday",
+                body: "Greetings,<br><br>I have a business proposal that will make us both very wealthy. I just need a small advance fee to unlock the vault..."
+            }
+        ];
+
+        // --- DOM ELEMENTS ---
+        const loginScreen = document.getElementById('login-screen');
+        const emailApp = document.getElementById('email-app');
+        const loginForm = document.getElementById('login-form');
+        const emailInput = document.getElementById('email-input');
+        const passwordInput = document.getElementById('password-input');
+        const errorMsg = document.getElementById('login-error');
+        const listContainer = document.getElementById('email-list-container');
+        const contentView = document.getElementById('email-content-view');
+
+        // --- LOGIC ---
+
+        // 1. Handle Login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            const pass = passwordInput.value;
+
+            // Hardcoded Logic: User must enter something, but for demo, specific creds work best
+            if (email === "user@fake.com" && pass === "password") {
+                loginScreen.classList.add('hidden');
+                emailApp.classList.remove('hidden');
+                emailApp.style.display = 'grid'; // Re-apply grid layout
+                renderEmailList();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+
+        // 2. Render Email List
+        function renderEmailList() {
+            listContainer.innerHTML = ''; // Clear current list
+            
+            emails.forEach(email => {
+                const item = document.createElement('div');
+                item.className = 'email-item';
+                item.onclick = () => loadEmail(email.id);
+                item.innerHTML = `
+                    <div class="email-sender">${email.sender}</div>
+                    <div class="email-subject">${email.subject}</div>
+                    <div class="email-preview">${email.body.replace(/<br>/g, ' ')}</div>
+                `;
+                item.dataset.id = email.id; // Store ID in DOM
+                listContainer.appendChild(item);
+            });
+        }
+
+        // 3. Load Email Content
+        function loadEmail(id) {
+            // Find data
+            const email = emails.find(e => e.id === id);
+            
+            // Highlight selected item in list
+            document.querySelectorAll('.email-item').forEach(el => el.classList.remove('selected'));
+            document.querySelector(`.email-item[data-id="${id}"]`).classList.add('selected');
+
+            // Render Content
+            contentView.innerHTML = `
+                <div class="email-view-header">
+                    <div class="view-subject">${email.subject}</div>
+                    <div class="view-meta">
+                        <span><strong>From:</strong> ${email.sender} &lt;${email.email}&gt;</span>
+                        <span>${email.time}</span>
+                    </div>
+                </div>
+                <div class="view-body">${email.body}</div>
+            `;
+        }
+    </script>
+</body>
+</html>
