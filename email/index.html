@@ -164,11 +164,11 @@
             <form id="login-form">
                 <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="email-input" value="user@fake.com" placeholder="Enter email">
+                    <input type="email" id="email-input" value="chaz.lentils@revert.com" placeholder="Enter email">
                 </div>
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" id="password-input" value="password" placeholder="Enter password">
+                    <input type="password" id="password-input" value="" placeholder="Enter password">
                 </div>
                 <button type="submit" class="btn-login">Sign In</button>
                 <p class="error-msg" id="login-error">Invalid credentials.</p>
@@ -178,8 +178,8 @@
 
     <div id="email-app" class="hidden">
         <header>
-            <h3>Welcome back, Tyler</h3>
-            <div id="user-display">t@fake.com</div>
+            <h3>Welcome back, chaz</h3>
+            <div id="user-display">chaz.lentils@fake.com</div>
         </header>
 
         <aside class="sidebar">
@@ -202,43 +202,47 @@
         const emails = [
             {
                 id: 1,
-                sender: "Boss",
-                email: "boss@company.com",
-                subject: "Urgent: Project Deadline",
+                sender: "Maeve Simmons",
+                email: "maeve.simmons@revert.com",
+                subject: "Urgent: Increase security needed",
                 time: "10:30 AM",
-                body: "Hi,<br><br>We need to discuss the Q4 roadmap. Please meet me in my office in 10 minutes.<br><br>Regards,<br>The Boss"
+                body: "Hi,Chaz<br><br>We need to discuss some changes that are needed. <br><br> with the FDA approval fast approaching i want to tighten up our hatches and stop some employees from saying some obviously untrue facts about our product<br><br>Please meet me in my office in 10 minutes.<br><br>Regards,<br>The Boss"
             },
             {
                 id: 2,
-                sender: "Netflix",
-                email: "info@netflix.com",
-                subject: "New login from a new device",
+                sender: "Watch it",
+                email: "IKnowWhatYouAreD01ng@gmail.com",
+                subject: "CHAZ READ ME URGENT",
                 time: "09:15 AM",
-                body: "Hello,<br><br>We noticed a login to your account from a new device in Antarctica. Was this you?<br><br>If not, please change your password immediately."
+                body: "chaz, <br><br>I know what you’ve been doing after hours. Don’t bother denying it—someone on this floor has been watching you far more closely than you realize." +
+                    "<br><br>"+
+                    "You think slipping those files onto your personal drive went unnoticed? You think no one would notice the one person who suddenly started asking the wrong questions about the wrong project?"+
+                    "<br><br>"+
+                    "Listen carefully:"+
+                    "If even a whisper of that data leaves this building, you won’t have to worry about HR. You’ll have to worry about me." +
+                    "<br><br>"+
+                    "I don’t want to spell out consequences—you’re smart enough to imagine them on your own. Let’s just say people who’ve tried this before aren’t around to brag about it."+
+                     "<br><br>"+
+                    "Delete the files. Forget what you saw. Act normal."+
+                    "This is the last time I’ll say it." +
+                    "<br><br>"+
+                    "—A Friend Who Knows Too Much,",
             },
-            {
-                id: 3,
-                sender: "Mom",
-                email: "mom@family.com",
-                subject: "Dinner this weekend?",
-                time: "Yesterday",
-                body: "Hey honey!<br><br>Are you coming over for dinner this Sunday? I'm making lasagna.<br><br>Love,<br>Mom"
-            },
+            // {
+            //     id: 3,
+            //     sender: "Tim",
+            //     email: "tim.mccrow@newyorktimes.com",
+            //     subject: "Meet?",
+            //     time: "Today",
+            //     body: "Hey<br><br> Are you still able to meet after the office party<br><br>I hate to be pushy but i cannot publish a story this hot without proof<br> I know you said you have some but just are worried about your safety so i understand why you dont want to send them over the wire<br> but i got my boss breathing down my neck for the documents<br><br> please hurry, Tim"
+            // },
             {
                 id: 4,
-                sender: "HR Department",
-                email: "hr@company.com",
-                subject: "Open Enrollment",
+                sender: "Martha Storm",
+                email: "Martha.storm@legal.revert.com",
+                subject: "Question about Amelia",
                 time: "Yesterday",
-                body: "Dear Employee,<br><br>It is time to choose your benefits for the upcoming year. Please log in to the portal to make your selections.<br><br>Best,<br>HR Team"
-            },
-            {
-                id: 5,
-                sender: "Nigerian Prince",
-                email: "prince@royalty.ng",
-                subject: "Business Opportunity $$$",
-                time: "Monday",
-                body: "Greetings,<br><br>I have a business proposal that will make us both very wealthy. I just need a small advance fee to unlock the vault..."
+                body: "Chaz, <br><br>I hope you’re doing well. I wanted to check in regarding a few statements Amelia has been making about the drug. She’s mentioned some effects and safety concerns that I haven’t seen documented anywhere, and before this spreads any further, I want to make sure we’re aligned on the facts.<br><br>Do you know if there’s any data that actually supports what she’s been saying?<br><br>If so, could you point me to the reports or trial notes where this was recorded?<br><br>Also, for our break schedule: if this turns into something we need to discuss as a group, let me know what times work best for you so we can plan around it.<br><br>Thanks for the help—just trying to keep everything accurate and above board.<br><br>Best, Martha",
             }
         ];
 
@@ -261,7 +265,7 @@
             const pass = passwordInput.value;
 
             // Hardcoded Logic: User must enter something, but for demo, specific creds work best
-            if (email === "user@fake.com" && pass === "password") {
+            if (email === "chaz.lentils@revert.com" && pass === "password") {
                 loginScreen.classList.add('hidden');
                 emailApp.classList.remove('hidden');
                 emailApp.style.display = 'grid'; // Re-apply grid layout
