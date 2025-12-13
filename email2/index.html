@@ -164,7 +164,7 @@
             <form id="login-form">
                 <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="email-input" value="chaz.lentils@revert.com" placeholder="Enter email">
+                    <input type="email" id="email-input" value="callahan.martin@revert.com" placeholder="Enter email">
                 </div>
                 <div class="input-group">
                     <label>Password</label>
@@ -178,8 +178,8 @@
 
     <div id="email-app" class="hidden">
         <header>
-            <h3>Welcome back, chaz</h3>
-            <div id="user-display">chaz.lentils@revert.com</div>
+            <h3>Welcome back, Dr. Callahan</h3>
+            <div id="user-display">c.striker@revert.com</div>
         </header>
 
         <aside class="sidebar">
@@ -200,53 +200,41 @@
     <script>
         // --- DATA ---
         const emails = [
-            {
+                     {
                 id: 1,
-                sender: "Maeve Simmons",
-                email: "maeve.simmons@revert.com",
-                subject: "Urgent: Increase security needed",
+                sender: "Revert Wellness Team",
+                email: "wellness@revertpharma.com",
+                subject: "Your Monthly Employee Treat – Pizza Coupon Inside! 🍕",
                 time: "10:30 AM",
-                body: "Hi,Chaz<br><br>We need to discuss some changes that are needed. <br><br> with the FDA approval fast approaching i want to tighten up our hatches and stop some employees from saying some obviously untrue facts about our product<br><br>Please meet me in my office in 10 minutes.<br><br>Regards,<br>The Boss"
+                body: "Hi Dr. Striker,<br><br>As part of our Monthly Wellness Boost, you’ve been selected to receive this month’s <b>Revert Employee Treat Coupon!</b> We partnered with Pizzicato’s Brick Oven to offer staff a little end-of-year comfort food.<br><br>Your coupon:<br><b>➡ One (1) free personal pizza — any style, any toppings (yes, even extra cheese).</b><br>Valid through: <b>January 31</b><br>Code: <b>REV-PIZZA-241</b><br><br>Just show the attached QR code at pickup or enter the code when ordering online.<br><a href=\"./frame.png\">link to QR code</a>ym<br>Warmly,<br>The Revert Wellness Team"
             },
             {
-                id: 2,
-                sender: "Watch it",
-                email: "IKnowWhatYouAreD01ng@gmail.com",
-                subject: "CHAZ READ ME URGENT",
-                time: "09:15 AM",
-                body: "chaz, <br><br>I know what you’ve been doing after hours. Don’t bother denying it—someone on this floor has been watching you far more closely than you realize." +
-                    "<br><br>"+
-                    "You think slipping those files onto your personal drive went unnoticed? You think no one would notice the one person who suddenly started asking the wrong questions about the wrong project?"+
-                    "<br><br>"+
-                    "Listen carefully:"+
-                    "If even a whisper of that data leaves this building, you won’t have to worry about HR. You’ll have to worry about me." +
-                    "<br><br>"+
-                    "I don’t want to spell out consequences—you’re smart enough to imagine them on your own. Let’s just say people who’ve tried this before aren’t around to brag about it."+
-                     "<br><br>"+
-                    "Delete the files. Forget what you saw. Act normal."+
-                    "This is the last time I’ll say it." +
-                    "<br><br>"+
-                    "—A Friend Who Knows Too Much,",
+                id: 2   ,
+                sender: "Martha Storm",
+                email: "m.storm@revertpharma.com",
+                subject: "Re: Urgent: Review of Protocol Updates",
+                time: "Today",
+                body: "Dr. Striker, <br><br>Thank you for reaching out. I can review the updated protocols and provide guidance, but please understand that some of the changes you mention were approved at levels beyond my immediate oversight. There are nuances in what has been submitted that may not be entirely obvious from the documents themselves.<br><br>I’ll make myself available this evening after the Holiday Party. We should be able to go over the critical points, but discretion will be necessary—both in conversation and in handling the documentation. You’ll want to avoid creating unnecessary records of our discussion.<br><br><br>I’m looking forward to helping clarify the legal requirements, but remember: not everything is as straightforward as it seems. Sometimes, knowing what not to mention is just as important as what we include.<br>Best regards,<br>Martha Storm<br>Senior Counsel<br>Revert Pharmaceuticals<br> ----------------------------------------------------- <br><br><br>From: Callahan Striker <c.striker@revertpharma.com><br>To: Martha Storm <m.storm@revertpharma.com><br>Subject: Urgent: Review of Protocol Updates<br>Hi Martha,<br><br>I hope you’re doing well. I’m reaching out regarding the recent changes to the Rev-12 clinical trial protocols. Some of the updates seem to impact both reporting requirements and adverse event documentation, and I want to ensure we’re fully compliant with internal policies and regulatory obligations.<br><br>Could we schedule a time today or tomorrow to go over the adjustments? I’d like your guidance on:<br><br>Documentation of patient outcomes in cases of severe adverse events<br>Any legal implications of modifying existing trial logs or data entries<br><br>Confirming that the updated protocol aligns with FDA expectations<br><br>I want to make sure that everything we submit is airtight before any internal or external review. Please let me know your earliest availability.<br><br><br>Thank you,<br>Dr. Callahan Striker<br>Head of Biochemistry<br>Revert Pharmaceuticals"
             },
-            // {
-            //     id: 3,
-            //     sender: "Tim",
-            //     email: "tim.mccrow@newyorktimes.com",
-            //     subject: "Meet?",
-            //     time: "Today",
-            //     body: "Hey<br><br> Are you still able to meet after the office party<br><br>I hate to be pushy but i cannot publish a story this hot without proof<br> I know you said you have some but just are worried about your safety so i understand why you dont want to send them over the wire<br> but i got my boss breathing down my neck for the documents<br><br> please hurry, Tim"
-            // },
-            // {
-            //     id: 4,
-            //     sender: "Martha Storm",
-            //     email: "Martha.storm@legal.revert.com",
-            //     subject: "Question about Amelia",
-            //     time: "Yesterday",
-            //     body: "Chaz, <br><br>I hope you’re doing well. I wanted to check in regarding a few statements Amelia has been making about the drug. She’s mentioned some effects and safety concerns that I haven’t seen documented anywhere, and before this spreads any further, I want to make sure we’re aligned on the facts.<br><br>Do you know if there’s any data that actually supports what she’s been saying?<br><br>If so, could you point me to the reports or trial notes where this was recorded?<br><br>Also, for our break schedule: if this turns into something we need to discuss as a group, let me know what times work best for you so we can plan around it.<br><br>Thanks for the help—just trying to keep everything accurate and above board.<br><br>Best, Martha",
-            // }
+            {
+                id: 3,
+                sender: 'Rosemary Quinn',
+                email: 'r.quinn@revertpharma.com, events-team@revertpharma.com',
+                subject: 'Callahan Striker – Meal Notes & Drink Preference for Holiday Event',
+                time: 'Today',
+                body: "Hi all, <br>Sending over the notes for Dr. Callahan Striker ahead of tonight’s Holiday Party so everything is set on the food and bar side.<br><br>Meal Notes:<br><br> &emsp;-- Prefers lighter entrées — grilled options over fried.<br> &emsp;-- No heavy creams or sauces.<br> &emsp;-- Add extra lemon on the side if available.<br>Drink Order:<br><br>&emsp;-- One espresso martini, shaken, not sweetened.<br><br>&emsp;-- He mentioned he’ll likely stop by early to grab it before the main crowd forms.<br><br>Allergy Information (Important):<br><br&emsp;-- Peanut allergy — severe, please ensure no cross-contact.<br><br>&emsp;-- Shellfish allergy (shrimp specifically) — please keep all shrimp platters well separated.<br><br>I’ll prep his plate personally to avoid any issues. Let me know if anything else comes up or if you need adjustments to the menu flow.<br><br>Thanks,<br>Rosemary Quinn<br>Onsite Cook & Catering Lead<br>Revert Pharmaceuticals"
+            }, 
+            {
+                id:4,
+                sender: 'Tim Iverson',
+                email: 't.iverson@NewYorkTimes.com',
+                time: 'Yesterday',
+                subject: "Re: WhistleBlower",
+                body: 'hello, this is very concerning please call my secured line<br><br>--------------------------------------------------------<br>To the Investigative Desk,<br><br>I’m reaching out under significant personal and professional risk. My name is Dr. Callahan Striker, Head of Biochemistry at Revert Pharmaceuticals, and I possess internal documentation regarding data manipulation tied to the Rev-12 rehabilitation trials.<br><br>These discrepancies were not accidental. Certain patient outcomes—particularly fatal ones—were removed, rewritten, or replaced with synthetic entries to fabricate a cleaner safety profile. Some of these alterations were carried out long after the trials concluded.<br><br>I’ve attempted to escalate this internally, but those channels have been quietly closed off. My access to the raw datasets was restricted without explanation earlier this week. It’s clear someone at Revert intends to finalize the narrative before regulatory eyes look too closely.<br><br>I will be available to meet in person tonight, after our company’s Holiday Party, at the time and location previously discussed. My window will be short, and communication after the meeting may become impossible.<br><br>If something prevents me from arriving, assume my concerns were justified and proceed as you see fit. Everything I have is ready to hand over.<br><br>Dr. Callahan Striker<br>Head of Biochemistry<br>Revert Pharmaceuticals'
+            }
         ];
 
-        // --- DOM ELEMENTS ---
+        // &emsp;--- DOM ELEMENTS ---
         const loginScreen = document.getElementById('login-screen');
         const emailApp = document.getElementById('email-app');
         const loginForm = document.getElementById('login-form');
@@ -265,7 +253,7 @@
             const pass = passwordInput.value;
 
             // Hardcoded Logic: User must enter something, but for demo, specific creds work best
-            if (email === "chaz.lentils@revert.com" && pass === "password") {
+            if (email === "callahan.martin@revert.com" && pass === "password") {
                 loginScreen.classList.add('hidden');
                 emailApp.classList.remove('hidden');
                 emailApp.style.display = 'grid'; // Re-apply grid layout
