@@ -119,5 +119,6 @@ table.steelBlueCols tfoot .links a{
 }
 .numbers{
     max-width: 90%;
-    padding: 10px;
+    padding: 20px;
+    text-align: center;
 }
