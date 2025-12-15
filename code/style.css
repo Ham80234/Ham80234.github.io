@@ -117,3 +117,7 @@ table.steelBlueCols tfoot .links a{
 .light-blue {
     color: #398AA4;
 }
+.numbers{
+    max-width: 90%;
+    padding: 10px;
+}
