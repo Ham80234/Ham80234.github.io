@@ -164,11 +164,11 @@
             <form id="login-form">
                 <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="email-input" value="chaz.lentils@revert.com" placeholder="Enter email">
+                    <input type="email" id="email-input" value="frank.nicoals@revert.com" placeholder="Enter email">
                 </div>
                 <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" id="password-input" value="" placeholder="Enter password">
+                    <label>PIN</label>
+                    <input type="password" id="password-input" value="" placeholder="Enter PIN">
                 </div>
                 <button type="submit" class="btn-login">Sign In</button>
                 <p class="error-msg" id="login-error">Invalid credentials.</p>
@@ -178,8 +178,8 @@
 
     <div id="email-app" class="hidden">
         <header>
-            <h3>Welcome back, chaz</h3>
-            <div id="user-display">chaz.lentils@revert.com</div>
+            <h3>Welcome back, Frank</h3>
+            <div id="user-display">frank.nicoals@revert.com</div>
         </header>
 
         <aside class="sidebar">
@@ -204,46 +204,42 @@
                 id: 1,
                 sender: "Maeve Simmons",
                 email: "maeve.simmons@revert.com",
-                subject: "Urgent: Increase security needed",
+                subject: "Hi Frank, Remember to do this",
                 time: "10:30 AM",
-                body: "Hi,Chaz<br><br>We need to discuss some changes that are needed. <br><br> with the FDA approval fast approaching i want to tighten up our hatches and stop some employees from saying some obviously untrue facts about our product<br><br>Please meet me in my office in 10 minutes.<br><br>Regards,<br>The Boss"
+                body: "Frank,<br><br>Following our discussion earlier this week, I’m confirming that the official FDA correspondence arrived this morning. The agency has finalized the approval window for <b>REV-12,</b> with the official <b>effective date listed as 01/07/26.</b><br><br>As agreed, this formal approval triggers the final clause in our internal governance protocol. Per Section 4.8 of the Regulatory Safeguard Agreement, approval activation legally permits the <b>termination of the encrypted preliminary trial archives</b>, including legacy datasets flagged during the pre-review period.<br><br>The system will prompt you for the date-key to authorize the termination sequence. Enter the approval date exactly as issued, without the dashes. Once processed, the archive will be removed from the active server index and folded into the long-term compliance vault.<br><br>Please confirm once you’ve completed the authorization so I can update the record on my end.<br><br>Congratulations again—this is the moment we’ve been waiting for.<br>Maeve<br><br>Maeve Simmins"
             },
             {
                 id: 2,
-                sender: "Watch it",
-                email: "IKnowWhatYouAreD01ng@gmail.com",
-                subject: "CHAZ READ ME URGENT",
+                sender: "Duncan Grey",
+                email: "d.grey@revertpharma.com",
+                subject: "After-Hours Lab Access – Scan-In Log Review",
                 time: "09:15 AM",
-                body: "chaz, <br><br>I know what you’ve been doing after hours. Don’t bother denying it—someone on this floor has been watching you far more closely than you realize." +
-                    "<br><br>"+
-                    "You think slipping those files onto your personal drive went unnoticed? You think no one would notice the one person who suddenly started asking the wrong questions about the wrong project?"+
-                    "<br><br>"+
-                    "Listen carefully:"+
-                    "If even a whisper of that data leaves this building, you won’t have to worry about HR. You’ll have to worry about me." +
-                    "<br><br>"+
-                    "I don’t want to spell out consequences—you’re smart enough to imagine them on your own. Let’s just say people who’ve tried this before aren’t around to brag about it."+
-                     "<br><br>"+
-                    "Delete the files. Forget what you saw. Act normal."+
-                    "This is the last time I’ll say it." +
-                    "<br><br>"+
-                    "—A Friend Who Knows Too Much,",
+                body: "Frank,<br><br>Flagging something from last night’s security sweep that I wanted to bring directly to your attention.<br><br>During routine log review, I noted an <b>after-hours badge scan</b> into Lab 3B at <b>22:47.</b> The access credential was registered to Carmen Lostwood. No secondary escort badge was logged, and there was no corresponding maintenance or scheduled regulatory review on file for that time window.<br><br>Cameras in the west corridor were undergoing their standard firmware update, so visual confirmation is limited, but the access system itself shows a clean scan and proper authorization. Entry duration appears to have been approximately <b>26 minutes before</b> exit.<br><br>This may have been approved verbally or tied to regulatory prep—I don’t have visibility into that side—but per protocol I’m documenting it and looping you in. Let me know if you’d like me to escalate, annotate the report, or leave it logged as informational only.<br><br>Regards,<br>Duncan Grey<br>Security Officer<br>Revert Pharmaceuticals",
             },
-            // {
-            //     id: 3,
-            //     sender: "Tim",
-            //     email: "tim.mccrow@newyorktimes.com",
-            //     subject: "Meet?",
-            //     time: "Today",
-            //     body: "Hey<br><br> Are you still able to meet after the office party<br><br>I hate to be pushy but i cannot publish a story this hot without proof<br> I know you said you have some but just are worried about your safety so i understand why you dont want to send them over the wire<br> but i got my boss breathing down my neck for the documents<br><br> please hurry, Tim"
-            // },
-            // {
-            //     id: 4,
-            //     sender: "Martha Storm",
-            //     email: "Martha.storm@legal.revert.com",
-            //     subject: "Question about Amelia",
-            //     time: "Yesterday",
-            //     body: "Chaz, <br><br>I hope you’re doing well. I wanted to check in regarding a few statements Amelia has been making about the drug. She’s mentioned some effects and safety concerns that I haven’t seen documented anywhere, and before this spreads any further, I want to make sure we’re aligned on the facts.<br><br>Do you know if there’s any data that actually supports what she’s been saying?<br><br>If so, could you point me to the reports or trial notes where this was recorded?<br><br>Also, for our break schedule: if this turns into something we need to discuss as a group, let me know what times work best for you so we can plan around it.<br><br>Thanks for the help—just trying to keep everything accurate and above board.<br><br>Best, Martha",
-            // }
+            {
+                id: 3,
+                sender: 'Harold Brown',
+                email: 'H.Brown@revertpharma.com',
+                subject: 'Need for a Serious Conversation About Advancement',
+                time: 'Today',
+                body: 'Frank,<br><br>I’m following up on a conversation that I expected would be taken more seriously.<br><br>When I brought up my promotion at Osaka’s last week, I laid out the additional responsibility I’ve taken on and the results I’ve consistently delivered. The fact that it was brushed off so quickly made it clear that my contributions weren’t being given much weight. Frankly, it was dismissive, and I found it hard to reconcile that reaction with the expectations that continue to be placed on me.<br><br>I’ve gone above and beyond what’s expected of my role, and I don’t think it’s unreasonable to expect acknowledgment and forward movement in return. If there are reasons I’m not being considered for advancement, I want them stated plainly rather than ignored.<br><br>I expect we can set aside time for a direct and honest conversation about this.<br><br>Harold Brown'
+            },
+            {
+                id: 4,
+                sender: "TikTok Trust & Safety",
+                email: "no-reply@tiktok.com",
+                subject: "Content Removal Confirmation – Unauthorized Medical Claims",
+                time: "Today",
+                body: "Hello Frank,<br><br>We are writing to confirm that the video content you reported regarding Rev-12 has been removed from TikTok for violating our policies on unauthorized medical claims and proprietary information.<br><br>The content was flagged for:<br><br>Making unverified claims about medical efficacy<br><br>Referencing non-public clinical trial outcomes<br><br>Potentially misleading viewers regarding treatment success<br><br>The video is no longer visible on the platform and the associated account has received a policy notice. At this time, no further action is required from you.<br><br>Please note that repeated uploads of similar content—by any party—may result in broader enforcement actions.<br><br>If you believe additional content related to this matter exists on TikTok, you may submit further reports through our standard channels.<br><br>Thank you for helping us keep TikTok safe. <br><br>TikTok Trust & Safety Team<br>This is an automated message. Replies to this email are not monitored.",
+            },
+            {
+                id: 5,
+                sender: "Dr. Callahan Striker",
+                email: "c.striker@revertpharma.com",
+                subject: "I Can’t Continue Like This",
+                time: "Yesterday",
+                body: "Frank,<br><br>I’ve reviewed the latest internal summaries again this morning, and I need to be clear: I can’t go forward with this secret any longer.<br><br>What we agreed to frame as “statistical alignment” has crossed into something else entirely. The decisions made after the early Rev-12 trial outcomes—what was excluded, what was smoothed, what was never re-run—are not defensible by science, no matter how clean the final models appear.<br><br>I told myself this was temporary. That approval would come, that post-market review would correct what the trial structure could not. But the more distance we put between ourselves and the original data, the more intentional this becomes.<br><br>I am not naïve. I understand the financial stakes, the investors, and the pressure to maintain confidence. I also understand that reversing course now would raise questions no one wants answered. That said, I will not continue to lend my name, my credentials, or my silence to this.<br><br>I need to know how you intend to address this—transparently and immediately—or I will have to consider options outside the company.<br><br>This is not a threat. It’s a line I should have drawn sooner.<br><br>—<br>Callahan",
+            }
         ];
 
         // --- DOM ELEMENTS ---
@@ -265,7 +261,7 @@
             const pass = passwordInput.value;
 
             // Hardcoded Logic: User must enter something, but for demo, specific creds work best
-            if (email === "chaz.lentils@revert.com" && pass === "") {
+            if (email === "frank.nicoals@revert.com" && pass === "71235") {
                 loginScreen.classList.add('hidden');
                 emailApp.classList.remove('hidden');
                 emailApp.style.display = 'grid'; // Re-apply grid layout
