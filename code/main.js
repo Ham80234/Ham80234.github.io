@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const spots = document.querySelectorAll(".spot");
   const buttons = document.querySelectorAll("button");
-  const correctCode = "122025";
+  const correctCode = "097642";
   let input = "";
 
   buttons.forEach((btn) => {
