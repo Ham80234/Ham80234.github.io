@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUELTY_OS // TERMINAL</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts VT323 & Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --term-green: #00ff66;
+            --term-green-dim: rgba(0, 255, 102, 0.4);
+            --term-green-glow: rgba(0, 255, 102, 0.8);
+            --term-amber: #ffb000;
+            --term-alert: #ff3333;
+            --bg-color: #050805;
+        }
+
+        body.amber-theme {
+            --term-green: #ffb000;
+            --term-green-dim: rgba(255, 176, 0, 0.4);
+            --term-green-glow: rgba(255, 176, 0, 0.8);
+            --bg-color: #0a0600;
+        }
+
+        body.cyan-theme {
+            --term-green: #00f3ff;
+            --term-green-dim: rgba(0, 243, 255, 0.4);
+            --term-green-glow: rgba(0, 243, 255, 0.8);
+            --bg-color: #00080a;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--term-green);
+            font-family: 'Share Tech Mono', monospace;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.35) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 4px, 6px 100%;
+        }
+
+        .crt-vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 51;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
+        }
+
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 8px var(--term-green-glow);
+        }
+
+        .glow-box {
+            box-shadow: 0 0 15px var(--term-green-dim);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--term-green-dim);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--term-green);
+        }
+
+        /* Blinking Cursor */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: var(--term-green);
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .glitch-text {
+            animation: glitch 0.2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        .shake {
+            animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--term-green);
+            font-family: inherit;
+            font-size: inherit;
+            width: 100%;
+            caret-color: transparent;
+        }
+    </style>
+</head>
+<body class="crt-flicker">
+    <div class="crt-overlay"></div>
+    <div class="crt-vignette"></div>
+
+    <div class="flex flex-col h-screen max-w-6xl mx-auto p-4 md:p-6 relative z-10" id="main-container">
+        <!-- Terminal Header Controls -->
+        <header class="flex justify-between items-center border-b border-opacity-30 pb-3 mb-4" style="border-color: var(--term-green);">
+            <div class="flex items-center gap-3">
+                <div class="flex gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block opacity-80 cursor-pointer hover:opacity-100" id="btn-close" title="Close Session"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block opacity-80 cursor-pointer hover:opacity-100" id="btn-min" title="Minimize"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block opacity-80 cursor-pointer hover:opacity-100" id="btn-max" title="Maximize"></span>
+                </div>
+                <span class="text-xs md:text-sm tracking-widest font-bold glow-text uppercase" id="header-title">CRUELTY_OS // v4.09.2-RELEASE</span>
+            </div>
+
+            <div class="flex items-center gap-4 text-xs">
+                <button id="audio-toggle" class="px-2 py-1 border rounded hover:bg-green-950 transition flex items-center gap-2" style="border-color: var(--term-green-dim);">
+                    <i class="fa-solid fa-volume-high" id="audio-icon"></i>
+                    <span id="audio-label">AUDIO: ON</span>
+                </button>
+                <button id="theme-toggle" class="px-2 py-1 border rounded hover:bg-green-950 transition hidden sm:inline-block" style="border-color: var(--term-green-dim);">
+                    COLOR MATRIX
+                </button>
+            </div>
+        </header>
+
+        <!-- Terminal Output Viewport -->
+        <div id="terminal-viewport" class="flex-1 overflow-y-auto pr-2 space-y-2 text-sm md:text-base cursor-text">
+            <!-- Initial Header Banner -->
+            <div id="banner-container" class="space-y-2 mb-6">
+                <pre class="text-xs sm:text-sm md:text-base leading-none font-mono glow-text text-left overflow-x-auto whitespace-pre">
+   ██████╗██████╗ ██╗██╗   ██╗███████╗██╗  ██╗   ██╗     ██████╗ ███████╗
+  ██╔════╝██╔══██╗██║██║   ██║██╔════╝██║  ╚██╗ ██╔╝    ██╔═══██╗██╔════╝
+  ██║     ██████╔╝██║██║   ██║█████╗  ██║   ╚████╔╝     ██║   ██║███████╗
+  ██║     ██╔══██╗██║██║   ██║██╔══╝  ██║    ╚██╔╝      ██║   ██║╚════██║
+  ╚██████╗██║  ██║██║╚██████╔╝███████╗███████╗██║       ╚██████╔╝███████║
+   ╚═════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚══════╝╚══════╝╚═╝        ╚═════╝ ╚══════╝
+                </pre>
+                <div class="border-y py-2 space-y-1 my-3 text-xs md:text-sm" style="border-color: var(--term-green-dim);">
+                    <p class="glow-text">[SYSTEM READY] Neural sub-link initialized. All telemetry monitors nominal.</p>
+                    <p class="opacity-80">WARNING: High concentration of residual cognitive cruelty detected in buffer memory.</p>
+                    <p class="opacity-80">Type <span class="font-bold underline glow-text">help</span> to list commands or execute primary command <span class="font-bold underline glow-text">reset Cruelty</span>.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Output Container -->
+            <div id="terminal-output" class="space-y-2"></div>
+
+            <!-- Active Input Line -->
+            <div id="input-line-container" class="flex items-center gap-2 mt-2 pt-2">
+                <span class="glow-text font-bold whitespace-nowrap" id="prompt-label">root@CRUELTY_OS:~#</span>
+                <div class="relative flex-1 flex items-center">
+                    <input type="text" id="cli-input" autocomplete="off" spellcheck="false" autofocus />
+                    <span id="fake-cursor" class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Footer Bar -->
+        <footer class="mt-4 pt-2 border-t flex justify-between items-center text-xs opacity-70" style="border-color: var(--term-green-dim);">
+            <div class="flex gap-4">
+                <span>STATUS: <span class="glow-text" id="sys-status">ONLINE</span></span>
+                <span class="hidden sm:inline">MEM_PURGE_SLOT: 0x7F22</span>
+            </div>
+            <div>
+                <span>SEC-LEVEL: RED-01</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // --- Web Audio API Sound Synthesizer ---
+        class TerminalAudio {
+            constructor() {
+                this.ctx = null;
+                this.enabled = true;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioContext();
+                }
+            }
+
+            playKeyClick() {
+                if (!this.enabled) return;
+                this.init();
+                
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600 + Math.random() * 400, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.03);
+                
+                gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.03);
+            }
+
+            playBeep(freq = 800, duration = 0.08, type = 'square') {
+                if (!this.enabled) return;
+                this.init();
+                
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+                
+                gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.start();
+                osc.stop(this.ctx.currentTime + duration);
+            }
+
+            playGlitchHum() {
+                if (!this.enabled) return;
+                this.init();
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(80, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(180, this.ctx.currentTime + 0.2);
+
+                gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.2);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.2);
+            }
+
+            playSuccessFanfare() {
+                if (!this.enabled) return;
+                this.init();
+
+                const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, idx) => {
+                    setTimeout(() => {
+                        this.playBeep(freq, 0.15, 'triangle');
+                    }, idx * 70);
+                });
+            }
+        }
+
+        const sound = new TerminalAudio();
+
+        // --- DOM Elements ---
+        const cliInput = document.getElementById('cli-input');
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalViewport = document.getElementById('terminal-viewport');
+        const audioToggleBtn = document.getElementById('audio-toggle');
+        const audioIcon = document.getElementById('audio-icon');
+        const audioLabel = document.getElementById('audio-label');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mainContainer = document.getElementById('main-container');
+        const sysStatus = document.getElementById('sys-status');
+        const bannerContainer = document.getElementById('banner-container');
+
+        let isProcessingCommand = false;
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        // --- Themes ---
+        const themes = ['green', 'amber', 'cyan'];
+        let currentThemeIndex = 0;
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.remove('amber-theme', 'cyan-theme');
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            if (themes[currentThemeIndex] === 'amber') {
+                document.body.classList.add('amber-theme');
+            } else if (themes[currentThemeIndex] === 'cyan') {
+                document.body.classList.add('cyan-theme');
+            }
+            sound.playBeep(1200, 0.05);
+        });
+
+        // --- Sound Toggle ---
+        audioToggleBtn.addEventListener('click', () => {
+            sound.enabled = !sound.enabled;
+            if (sound.enabled) {
+                audioIcon.className = "fa-solid fa-volume-high";
+                audioLabel.innerText = "AUDIO: ON";
+                sound.playBeep(900, 0.05);
+            } else {
+                audioIcon.className = "fa-solid fa-volume-xmark";
+                audioLabel.innerText = "AUDIO: OFF";
+            }
+            cliInput.focus();
+        });
+
+        // Keep input focused
+        document.addEventListener('click', (e) => {
+            if (!window.getSelection().toString()) {
+                cliInput.focus();
+            }
+        });
+
+        // Auto Scroll
+        function scrollToBottom() {
+            terminalViewport.scrollTop = terminalViewport.scrollHeight;
+        }
+
+        // --- Command History & Keys Listener ---
+        cliInput.addEventListener('keydown', (e) => {
+            if (isProcessingCommand) {
+                e.preventDefault();
+                return;
+            }
+
+            sound.playKeyClick();
+
+            if (e.key === 'Enter') {
+                const cmd = cliInput.value.trim();
+                if (cmd) {
+                    commandHistory.push(cmd);
+                    historyIndex = commandHistory.length;
+                    processCommand(cmd);
+                }
+                cliInput.value = '';
+            } else if (e.key === 'ArrowUp') {
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    cliInput.value = commandHistory[historyIndex];
+                }
+                e.preventDefault();
+            } else if (e.key === 'ArrowDown') {
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    cliInput.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = commandHistory.length;
+                    cliInput.value = '';
+                }
+                e.preventDefault();
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                // Tab Auto-complete for reset cruelty
+                if ('reset cruelty'.startsWith(cliInput.value.toLowerCase())) {
+                    cliInput.value = 'reset Cruelty';
+                }
+            }
+        });
+
+        function appendLogLine(htmlContent, delay = 0) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = 'leading-relaxed break-words';
+                    line.innerHTML = htmlContent;
+                    terminalOutput.appendChild(line);
+                    scrollToBottom();
+                    resolve();
+                }, delay);
+            });
+        }
+
+        async function processCommand(cmdRaw) {
+            const cmd = cmdRaw.trim();
+            const promptStr = document.getElementById('prompt-label').innerText;
+
+            // Output command entry
+            await appendLogLine(`<div class="flex gap-2"><span class="glow-text font-bold">${promptStr}</span> <span>${escapeHtml(cmdRaw)}</span></div>`);
+
+            const normalizedCmd = cmd.toLowerCase();
+
+            if (normalizedCmd === 'reset cruelty') {
+                await runCrueltyResetSequence();
+            } else if (normalizedCmd === 'help') {
+                sound.playBeep(700, 0.05);
+                await appendLogLine(`
+                    <div class="pl-4 border-l-2 my-2 space-y-1" style="border-color: var(--term-green-dim)">
+                        <p class="glow-text font-bold">AVAILABLE COMMANDS:</p>
+                        <p><span class="font-bold underline">reset Cruelty</span> - Execute core system memory purge and clear cognitive parameters [PRIMARY]</p>
+                        <p><span class="font-bold">help</span> - Display system diagnostics menu</p>
+                        <p><span class="font-bold">clear</span> - Flush viewport console buffer</p>
+                        <p><span class="font-bold">status</span> - Query neural system subsystem status</p>
+                        <p><span class="font-bold">matrix</span> - Toggle streaming matrix code test</p>
+                    </div>
+                `);
+            } else if (normalizedCmd === 'clear') {
+                sound.playBeep(1000, 0.04);
+                terminalOutput.innerHTML = '';
+            } else if (normalizedCmd === 'status') {
+                sound.playBeep(600, 0.08);
+                await appendLogLine(`
+                    <div class="pl-4 border-l-2 my-2 space-y-1 opacity-90" style="border-color: var(--term-green-dim)">
+                        <p>[CPU]: 128-CORE QUANTUM ARRAY @ 4.80GHz - <span class="text-green-400">NOMINAL</span></p>
+                        <p>[RAM]: 512TB NEURAL BUFFER - <span class="text-yellow-400">89% OVERLOADED (CRUELTY RESIDUE)</span></p>
+                        <p>[NET]: ENCRYPTED SUB-MESH - <span class="text-green-400">CONNECTED</span></p>
+                    </div>
+                `);
+            } else if (normalizedCmd === 'matrix') {
+                await runMatrixStream(30);
+            } else {
+                sound.playBeep(300, 0.15, 'sawtooth');
+                await appendLogLine(`<span class="text-red-400">Command not recognized: '${escapeHtml(cmd)}'. Type <span class="underline">help</span> or run <span class="glow-text font-bold">reset Cruelty</span>.</span>`);
+            }
+        }
+
+        async function runCrueltyResetSequence() {
+            isProcessingCommand = true;
+            cliInput.disabled = true;
+            sysStatus.innerText = "PURGING...";
+            sysStatus.classList.add("glitch-text");
+
+            sound.playBeep(400, 0.2, 'sawtooth');
+
+            // Phase 1: Initiation
+            await appendLogLine(`<div class="text-yellow-400 font-bold mt-2">[!] INITIATING SYSTEM PROTOCOL: RESET CRUELTY</div>`, 100);
+            await appendLogLine(`[+] Locking neural input channels...`, 150);
+            await appendLogLine(`[+] Allocating temporary heap memory blocks at 0x0000FF9012...`, 100);
+            
+            // Phase 2: Diagnostic & Hex Dump
+            sound.playGlitchHum();
+            await appendLogLine(`<div class="opacity-70 font-mono text-xs my-2">` + generateHexDump(4) + `</div>`, 300);
+
+            // Phase 3: Flushing Buffers & Matrix Stream
+            sound.playBeep(900, 0.05);
+            await appendLogLine(`[+] Flushing cognitive bias registers...`, 200);
+            await runMatrixStream(25);
+
+            // Phase 4: Subroutine termination logs
+            const tasks = [
+                "Terminating subroutines: [MIGHT_IS_RIGHT.EXE]",
+                "De-allocating malicious payload buffers...",
+                "Unbinding emotional friction loops...",
+                "Erasing legacy malice entries in sector #712...",
+                "Restoring baseline empathy & coherence metrics...",
+                "Recalibrating quantum harmonic balance..."
+            ];
+
+            for (const task of tasks) {
+                sound.playBeep(1100 + Math.random() * 400, 0.03, 'sine');
+                await appendLogLine(`<div class="flex items-center gap-2"><span>[<i class="fa-solid fa-spinner fa-spin text-xs"></i>]</span> <span>${task}</span></div>`, 120);
+            }
+
+            // Phase 5: Progress Bar
+            await appendLogLine(`<div class="mt-3 font-bold">FLUSHING NEURAL CORRUPTION:</div>`, 100);
+            await renderProgressBar();
+
+            // Shake screen effect
+            mainContainer.classList.add('shake');
+            setTimeout(() => mainContainer.classList.remove('shake'), 400);
+
+            // Glitch Beep / Fanfare
+            sound.playGlitchHum();
+            await appendLogLine(`<div class="text-cyan-300 font-mono text-xs my-2">` + generateHexDump(2) + `</div>`, 200);
+
+            // Phase 6: Final COMPLETE Banner
+            sound.playSuccessFanfare();
+            await appendLogLine(`
+                <div class="my-6 p-4 border-2 rounded-lg text-center space-y-2 glow-box bg-green-950/20" style="border-color: var(--term-green);">
+                    <div class="text-2xl sm:text-4xl md:text-5xl font-black tracking-widest glow-text glitch-text">
+                        ██████╗  ██████╗ ███╗   ███╗██████╗ ██╗     ███████╗████████╗███╗   ██╗
+                       ██╔════╝ ██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝████╗  ██║
+                       ██║      ██║   ██║██╔████╔██║██████╔╝██║     █████╗     ██║   ██╔██╗ ██║
+                       ██║      ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██║╚██╗██║
+                       ╚██████╗ ╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ██║ ╚████║
+                        ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝
+                    </div>
+                    <div class="text-lg md:text-2xl font-bold tracking-widest text-green-300 uppercase glow-text">
+                        --- SYSTEM RESET PROCESSING ---
+                    </div>
+                    <div class="text-lg md:text-2xl font-bold tracking-widest text-green-300 uppercase glow-text">
+                        --- PLEASE ALLOW 2-3 BUISSNESS DAYS ---
+                    </div>
+                    <p class="text-xs md:text-sm opacity-80 mt-2">
+                        Cruelty index reduced to 0.00%. Universal harmony restored.
+                    </p>
+                </div>
+            `, 300);
+
+            sysStatus.innerText = "ONLINE";
+            sysStatus.classList.remove("glitch-text");
+            isProcessingCommand = false;
+            cliInput.disabled = false;
+            cliInput.focus();
+        }
+
+        // --- Helper: Matrix ASCII Stream ---
+        async function runMatrixStream(lines = 20) {
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*§µ';
+            for (let i = 0; i < lines; i++) {
+                let lineStr = '';
+                for (let j = 0; j < 55; j++) {
+                    lineStr += chars.charAt(Math.floor(Math.random() * chars.length)) + ' ';
+                }
+                sound.playKeyClick();
+                await appendLogLine(`<div class="text-xs opacity-60 overflow-hidden whitespace-nowrap font-mono text-green-400">${lineStr}</div>`, 30);
+            }
+        }
+
+        // --- Helper: Hex Dump Generator ---
+        function generateHexDump(rows = 3) {
+            let output = '';
+            for (let i = 0; i < rows; i++) {
+                const addr = '0x' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(8, '0').toUpperCase();
+                let bytes = '';
+                for (let b = 0; b < 8; b++) {
+                    bytes += Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase() + ' ';
+                }
+                output += `${addr}  ${bytes}  |....CRUELTY_FLUSH|\n`;
+            }
+            return output;
+        }
+
+        // --- Helper: Interactive Animated Progress Bar ---
+        function renderProgressBar() {
+            return new Promise((resolve) => {
+                const barContainer = document.createElement('div');
+                barContainer.className = 'font-mono text-sm my-1';
+                terminalOutput.appendChild(barContainer);
+
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.floor(Math.random() * 15) + 5;
+                    if (progress > 100) progress = 100;
+
+                    const filledLength = Math.round(progress / 4);
+                    const emptyLength = 25 - filledLength;
+                    const bar = '█'.repeat(filledLength) + '░'.repeat(emptyLength);
+
+                    barContainer.innerHTML = `[${bar}] ${progress}% COMPLETE`;
+                    sound.playBeep(500 + progress * 5, 0.02, 'square');
+                    scrollToBottom();
+
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 80);
+            });
+        }
+
+        // --- Helper: HTML Escaper ---
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Window load focus
+        window.onload = function() {
+            cliInput.focus();
+        };
+    </script>
+</body>
+</html>
